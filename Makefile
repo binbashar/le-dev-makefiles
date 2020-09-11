@@ -1,24 +1,25 @@
-include ./ansible/ansible.mk
-include ./circleci/circleci.mk
-include ./git/git.mk
-include ./github/github.mk
+.PHONY: help
+SHELL                    := /bin/bash
+MAKEFILE_PATH            := ./Makefile
+MAKEFILES_DIR            := ./@bin/makefiles
 
-include ./kops/kops.mk
-include ./kops/kops-extras.mk
-include ./kubectl/kubectl13.mk
-include ./kubectl/kubectl14.mk
+help:
+	@echo 'Available Commands:'
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf " - \033[36m%-18s\033[0m %s\n", $$1, $$2}'
 
-include ./release-mgmt/release.mk
+#==============================================================#
+# INITIALIZATION                                               #
+#==============================================================#
+init-makefiles: ## initialize makefiles
+	rm -rf ${MAKEFILES_DIR}
+	mkdir -p ${MAKEFILES_DIR}
+	git clone https://github.com/binbashar/le-dev-makefiles.git ${MAKEFILES_DIR}
+	echo "" >> ${MAKEFILE_PATH}
+	sed -i '/^#include.*/s/^#//' ${MAKEFILE_PATH}
 
-include ./terraform11/terraform11.mk
-include ./terraform11/terraform11-subfolder.mk
-
-include ./terraform12/terraform12.mk
-include ./terraform12/terraform12-import-rm.mk
-include ./terraform12/terraform12-mfa.mk
-include ./terraform12/terraform12-no-warn.mk
-include ./terraform12/terraform12-root-context.mk
-include ./terraform12/terraform12-subfolder.mk
-
-include ./terraform13/terraform13.mk
-include ./terraform13/terraform13-import-rm.mk
+#
+## IMPORTANT: Automatically managed
+## Must NOT UNCOMMENT the #include lines below
+#
+#include ${MAKEFILES_DIR}/circleci/circleci.mk
+#include ${MAKEFILES_DIR}/release-mgmt/release.mk
