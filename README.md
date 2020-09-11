@@ -11,15 +11,13 @@
 ## Overview
 This repository contains all Makefiles used to operate Binbash Leverage ropositories.
 
-## Files/Folders Organization
-The following block provides a brief explanation of the chosen files/folders layout:
-
 ---
 
 # TODO
 
 - Add Makefile lint step to CI job. 
 - Improve readme.md
+    - Files/Folders Organization
 - apply in every Leverage Repo
 
 # Release Management
