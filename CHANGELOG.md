@@ -7,6 +7,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.2"></a>
+## [v0.0.2] - 2020-09-11
+
+- BBL-381 | updating .gitignore to allow [@bin](https://github.com/bin) ignore during buil_and_release ci stage
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- BBL-381 | making an example of le-dev-makefiles approach by using it itself
+
+
 <a name="v0.0.1"></a>
 ## v0.0.1 - 2020-09-11
 
@@ -15,4 +23,5 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.1...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.2...HEAD
+[v0.0.2]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.1...v0.0.2
