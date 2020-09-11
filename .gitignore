@@ -8,7 +8,8 @@
 !*.circleci
 !*.dockeringnore
 !*.hosts
-!/.gitignore
+!.hosts.example
+!*.gitignore
 !/.chglog
 !/.gitallowed
 !/.github
@@ -19,6 +20,7 @@
 ############
 id_rsa
 id_dsa
+keys/
 
 # OS generated files #
 ######################
@@ -78,3 +80,8 @@ Thumbs.db
 *.vault_pass
 *.pgpass
 *.vagrant
+
+# Project specific files #
+#################################
+/@bin
+
