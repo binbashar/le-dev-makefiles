@@ -7,6 +7,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.3"></a>
+## [v0.0.3] - 2020-09-15
+
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- BBL-81 | ansible.mk sintaxt comment fixed
+- BBL-81 | ansible.mk update
+
+
 <a name="v0.0.2"></a>
 ## [v0.0.2] - 2020-09-11
 
@@ -23,5 +31,6 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.2...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.3...HEAD
+[v0.0.3]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.2...v0.0.3
 [v0.0.2]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.1...v0.0.2
