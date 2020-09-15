@@ -12,7 +12,7 @@ help:
 	@egrep '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":"}; { if ($$3 == "") { printf " - \033[36m%-18s\033[0m %s\n", $$1, $$2 } else { printf " - \033[36m%-18s\033[0m %s\n", $$2, $$3 }}'
 
 #==============================================================#
-# ANSIBLE	 												   #
+# ANSIBLE                                                      #
 #==============================================================#
 init-ansible-py: ## Install required ansible version
 		pip install --user --upgrade pip==${PY_PIP_VER}
