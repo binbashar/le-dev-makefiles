@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.5"></a>
+## [v0.0.5] - 2020-09-17
+
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- BBL-381 | updating terraform-docs tag
+
+
 <a name="v0.0.4"></a>
 ## [v0.0.4] - 2020-09-17
 
@@ -37,7 +44,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.4...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.5...HEAD
+[v0.0.5]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.4...v0.0.5
 [v0.0.4]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.3...v0.0.4
 [v0.0.3]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.2...v0.0.3
 [v0.0.2]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.1...v0.0.2
