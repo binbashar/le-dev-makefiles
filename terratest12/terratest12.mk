@@ -85,7 +85,7 @@ pre-commit: ## Execute validation: pre-commit run --all-files.
 terraform-docs: ## A utility to generate documentation from Terraform 0.12 modules in various output formats.
 	docker run --rm \
   	-v $$(pwd):/data \
-  	cytopia/terraform-docs:0.9.2 \
+  	cytopia/terraform-docs:0.9.1 \
   	terraform-docs-012 --sort-inputs-by-required --with-aggregate-type-defaults markdown table .
 
 #==============================================================#
