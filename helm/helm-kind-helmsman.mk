@@ -78,7 +78,7 @@ helmsman-clean:
 # K8s HELM                                                     #
 #==============================================================#
 helm-list: ## List helm releases
-	${K8S_HELMSMAN_CMD_PREFIX} helm run helm list --kube-context ${K8S_KIND_KUBECTL_CONTEXT}
+	${K8S_HELMSMAN_CMD_PREFIX} helm list --kube-context ${K8S_KIND_KUBECTL_CONTEXT}
 
 helm-search-hub: ## Find publicly available helm charts
 	${K8S_HELMSMAN_CMD_PREFIX} helm search hub ${HELM_PACKAGE_NAME}
