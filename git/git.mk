@@ -47,6 +47,25 @@ git-pull-master: ## Git pull repo from master branch
 	done;\
 	IFS=$$OLDIFS
 
+git-discard-changes-repo: ## Git checkout . repo (to discard local changes)
+	REPOS=(${REPOS_LIST});\
+    OLDIFS=$$IFS;\
+    IFS=',';\
+    for i in "$${REPOS[@]}"; do\
+		set -- $$i;\
+        cd $$1;\
+        echo -----------------------;\
+        echo $$1;\
+        echo -----------------------;\
+        git checkout ${GIT_BRANCH_NAME};\
+        git checkout .;\
+        echo -----------------------;\
+        echo "GIT CHECKOUT . DONE";\
+        cd ..;\
+        echo "";\
+	done;\
+	IFS=$$OLDIFS
+
 git-sync-fork-upstream: ## Git sync from master forked upstream repos
 	REPOS=(${REPOS_LIST});\
     OLDIFS=$$IFS;\
