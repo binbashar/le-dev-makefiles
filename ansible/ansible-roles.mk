@@ -1,9 +1,10 @@
 .PHONY: help
-SHELL           := /bin/bash
+SHELL               := /bin/bash
 
-PY_PIP_VER      := 20.2.3
-PY_ANSIBLE_VER  := 2.8.14
-PY_MOLECULE_VER := 3.0.8
+PY_PIP_VER          := 20.2.3
+PY_ANSIBLE_VER      := 2.8.14
+PY_MOLECULE_VER     := 3.0.8
+PY_ANSIBLE_LINT_VER := v4.3.5
 
 help:
 	@echo 'Available Commands:'
@@ -18,6 +19,7 @@ init: ## Install required ansible roles
 		pip install --upgrade pip==${PY_PIP_VER};\
 		pip install --user -I ansible==${PY_ANSIBLE_VER};\
 		pip install --user -I molecule[docker]==${PY_MOLECULE_VER};\
+		pip install --user -I ansible-lint==${PY_ANSIBLE_LINT_VER};\
 	else\
 		echo "# CircleCI molecule dependencies setup";\
 		pip install --upgrade pip==${PY_PIP_VER};\
