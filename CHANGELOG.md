@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.17"></a>
+## [v0.0.17] - 2020-09-24
+
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- BBL-381 | fixing ansible-lint and mkdocs-material versions
+
+
 <a name="v0.0.16"></a>
 ## [v0.0.16] - 2020-09-24
 
@@ -123,7 +130,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.16...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.17...HEAD
+[v0.0.17]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.16...v0.0.17
 [v0.0.16]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.15...v0.0.16
 [v0.0.15]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.14...v0.0.15
 [v0.0.14]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.13...v0.0.14
