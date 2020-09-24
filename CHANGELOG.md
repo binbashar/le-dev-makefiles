@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.16"></a>
+## [v0.0.16] - 2020-09-24
+
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- BBL-381 | chagning ansible-roles.mk init cmds
+
+
 <a name="v0.0.15"></a>
 ## [v0.0.15] - 2020-09-22
 
@@ -116,7 +123,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.15...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.16...HEAD
+[v0.0.16]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.15...v0.0.16
 [v0.0.15]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.14...v0.0.15
 [v0.0.14]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.13...v0.0.14
 [v0.0.13]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.12...v0.0.13
