@@ -2,7 +2,7 @@
 SHELL               := /bin/bash
 
 PY_PIP_VER          := 20.2.3
-PY_ANSIBLE_VER      := 2.9.13
+PY_ANSIBLE_VER      := 2.8.15
 PY_MOLECULE_VER     := 3.0.2.1
 PY_ANSIBLE_LINT_VER := 4.2.0
 PY_YAMLINT_VER      := 1.24.2
