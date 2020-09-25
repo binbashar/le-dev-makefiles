@@ -5,6 +5,7 @@ PY_PIP_VER          := 20.2.3
 PY_ANSIBLE_VER      := 2.9.13
 PY_MOLECULE_VER     := 3.0.2.1
 PY_ANSIBLE_LINT_VER := 4.2.0
+PY_YAMLINT_VER      := 1.24.2
 
 help:
 	@echo 'Available Commands:'
@@ -20,12 +21,14 @@ init: ## Install required ansible roles
 		pip install --user -I molecule[docker]==${PY_MOLECULE_VER};\
 		pip install --user -I ansible==${PY_ANSIBLE_VER};\
 		pip install --user -I ansible-lint==${PY_ANSIBLE_LINT_VER};\
+		pip install --user -I yamllint==${PY_YAMLINT_VER};\
 	else\
 		echo "# CircleCI molecule dependencies setup";\
 		pip install --upgrade pip==${PY_PIP_VER};\
 		pip install -I molecule[docker]==${PY_MOLECULE_VER};\
 		pip install -I ansible==${PY_ANSIBLE_VER};\
 		pip install --user -I ansible-lint==${PY_ANSIBLE_LINT_VER};\
+		pip install --user -I yamllint==${PY_YAMLINT_VER};\
 	fi;
 
 test-ansible-lint: ## Ansible lint
