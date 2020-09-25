@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.23"></a>
+## [v0.0.23] - 2020-09-25
+
+- BBL-381 | upgrading to python3 ansible-roles.mk
+
+
 <a name="v0.0.22"></a>
 ## [v0.0.22] - 2020-09-25
 
@@ -161,7 +167,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.22...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.23...HEAD
+[v0.0.23]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.22...v0.0.23
 [v0.0.22]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.21...v0.0.22
 [v0.0.21]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.20...v0.0.21
 [v0.0.20]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.19...v0.0.20
