@@ -27,8 +27,8 @@ init: ## Install required ansible roles
 		pip install --upgrade pip==${PY_PIP_VER};\
 		pip install -I molecule[docker]==${PY_MOLECULE_VER};\
 		pip install -I ansible==${PY_ANSIBLE_VER};\
-		pip install --user -I ansible-lint==${PY_ANSIBLE_LINT_VER};\
-		pip install --user -I yamllint==${PY_YAMLINT_VER};\
+		pip install -I ansible-lint==${PY_ANSIBLE_LINT_VER};\
+		pip install -I yamllint==${PY_YAMLINT_VER};\
 	fi;
 
 test-ansible-lint: ## Ansible lint
