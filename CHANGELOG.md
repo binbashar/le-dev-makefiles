@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.19"></a>
+## [v0.0.19] - 2020-09-25
+
+- BBL-381 | adding yamlint pre-req to ansible-roles.mk
+
+
 <a name="v0.0.18"></a>
 ## [v0.0.18] - 2020-09-24
 
@@ -136,7 +142,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.18...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.19...HEAD
+[v0.0.19]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.18...v0.0.19
 [v0.0.18]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.17...v0.0.18
 [v0.0.17]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.16...v0.0.17
 [v0.0.16]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.15...v0.0.16
