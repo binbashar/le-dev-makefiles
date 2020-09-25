@@ -17,18 +17,18 @@ help:
 init: ## Install required ansible roles
 	@if [[ "$$(cd ../ && ls |grep '${ANSIBLE_REPO_ROLE_NAME}')" =~ "${ANSIBLE_REPO_ROLE_NAME}" ]]; then\
 		echo "# Local molecule dependencies setup";\
-		pip install --upgrade pip==${PY_PIP_VER};\
-		pip install --user -I molecule[docker]==${PY_MOLECULE_VER};\
-		pip install --user -I ansible==${PY_ANSIBLE_VER};\
-		pip install --user -I ansible-lint==${PY_ANSIBLE_LINT_VER};\
-		pip install --user -I yamllint==${PY_YAMLINT_VER};\
+		pip3 install --upgrade pip==${PY_PIP_VER};\
+		pip3 install --user -I molecule[docker]==${PY_MOLECULE_VER};\
+		pip3 install --user -I ansible==${PY_ANSIBLE_VER};\
+		pip3 install --user -I ansible-lint==${PY_ANSIBLE_LINT_VER};\
+		pip3 install --user -I yamllint==${PY_YAMLINT_VER};\
 	else\
 		echo "# CircleCI molecule dependencies setup";\
-		pip install --upgrade pip==${PY_PIP_VER};\
-		pip install -I molecule[docker]==${PY_MOLECULE_VER};\
-		pip install -I ansible==${PY_ANSIBLE_VER};\
-		pip install -I ansible-lint==${PY_ANSIBLE_LINT_VER};\
-		pip install -I yamllint==${PY_YAMLINT_VER};\
+		pip3 install --upgrade pip==${PY_PIP_VER};\
+		pip3 install -I molecule[docker]==${PY_MOLECULE_VER};\
+		pip3 install -I ansible==${PY_ANSIBLE_VER};\
+		pip3 install -I ansible-lint==${PY_ANSIBLE_LINT_VER};\
+		pip3 install -I yamllint==${PY_YAMLINT_VER};\
 	fi;
 
 test-ansible-lint: ## Ansible lint
