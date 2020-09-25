@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.24"></a>
+## [v0.0.24] - 2020-09-25
+
+- BBL-381 | fixing ansible-roles.mk sintaxt
+- BBL-381 | forcing ansible re-install
+
+
 <a name="v0.0.23"></a>
 ## [v0.0.23] - 2020-09-25
 
@@ -167,7 +174,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.23...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.24...HEAD
+[v0.0.24]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.23...v0.0.24
 [v0.0.23]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.22...v0.0.23
 [v0.0.22]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.21...v0.0.22
 [v0.0.21]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.20...v0.0.21
