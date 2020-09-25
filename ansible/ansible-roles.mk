@@ -18,7 +18,7 @@ init: ## Install required ansible roles
 	@if [[ "$$(cd ../ && ls |grep '${ANSIBLE_REPO_ROLE_NAME}')" =~ "${ANSIBLE_REPO_ROLE_NAME}" ]]; then\
 		echo "# Local molecule dependencies setup";\
 		pip3 install --upgrade pip==${PY_PIP_VER};\
-		pip uninstall ansible;\
+		pip uninstall ansible --yes;\
 		pip3 install --user -I molecule[docker]==${PY_MOLECULE_VER};\
 		pip3 install --user -I ansible==${PY_ANSIBLE_VER};\
 		pip3 install --user -I ansible-lint==${PY_ANSIBLE_LINT_VER};\
@@ -26,7 +26,7 @@ init: ## Install required ansible roles
 	else\
 		echo "# CircleCI molecule dependencies setup";\
 		pip3 install --upgrade pip==${PY_PIP_VER};\
-		pip uninstall ansible;\
+		pip uninstall ansible --yes;\
 		pip3 install -I molecule[docker]==${PY_MOLECULE_VER};\
 		pip3 install -I ansible==${PY_ANSIBLE_VER};\
 		pip3 install -I ansible-lint==${PY_ANSIBLE_LINT_VER};\
