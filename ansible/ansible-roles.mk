@@ -2,10 +2,10 @@
 SHELL               := /bin/bash
 
 PY_PIP_VER          := 20.2.3
-PY_ANSIBLE_VER      := 2.9.13
-PY_MOLECULE_VER     := 3.0.8
-PY_ANSIBLE_LINT_VER := 4.2.0
+PY_MOLECULE_VER     := 3.0.8 # w/ Ansible 2.10.1
+PY_ANSIBLE_LINT_VER := 4.3.5
 PY_YAMLINT_VER      := 1.24.2
+PY_SH_VER 					:= 1.13.1
 
 help:
 	@echo 'Available Commands:'
@@ -18,19 +18,18 @@ init: ## Install required ansible roles
 	@if [[ "$$(cd ../ && ls |grep '${ANSIBLE_REPO_ROLE_NAME}')" =~ "${ANSIBLE_REPO_ROLE_NAME}" ]]; then\
 		echo "# Local molecule dependencies setup";\
 		pip3 install --upgrade pip==${PY_PIP_VER};\
-		pip uninstall ansible --yes;\
-		pip3 install --user -I molecule[docker]==${PY_MOLECULE_VER};\
-		pip3 install --user -I ansible==${PY_ANSIBLE_VER};\
-		pip3 install --user -I ansible-lint==${PY_ANSIBLE_LINT_VER};\
-		pip3 install --user -I yamllint==${PY_YAMLINT_VER};\
+		pip3 uninstall sh --yes;\
+		pip3 install --use-feature=2020-resolver --user -I sh==${PY_SH_VER};\
+		pip3 install --use-feature=2020-resolver --user -I molecule==${PY_MOLECULE_VER};\
+		pip3 install --use-feature=2020-resolver --user -I ansible-lint==${PY_ANSIBLE_LINT_VER};\
+		pip3 install --use-feature=2020-resolver --user -I yamllint==${PY_YAMLINT_VER};\
 	else\
 		echo "# CircleCI molecule dependencies setup";\
 		pip3 install --upgrade pip==${PY_PIP_VER};\
-		pip uninstall ansible --yes;\
-		pip3 install -I molecule[docker]==${PY_MOLECULE_VER};\
-		pip3 install -I ansible==${PY_ANSIBLE_VER};\
-		pip3 install -I ansible-lint==${PY_ANSIBLE_LINT_VER};\
-		pip3 install -I yamllint==${PY_YAMLINT_VER};\
+		pip3 install --use-feature=2020-resolver --user -I sh==${PY_SH_VER};\
+		pip3 install --use-feature=2020-resolver -I molecule==${PY_MOLECULE_VER};\
+		pip3 install --use-feature=2020-resolver -I ansible-lint==${PY_ANSIBLE_LINT_VER};\
+		pip3 install --use-feature=2020-resolver -I yamllint==${PY_YAMLINT_VER};\
 	fi;
 
 test-ansible-lint: ## Ansible lint
