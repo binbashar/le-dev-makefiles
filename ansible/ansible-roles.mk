@@ -20,14 +20,14 @@ init: ## Install required ansible roles
 		pip3 install --upgrade pip==${PY_PIP_VER};\
 		pip3 uninstall sh --yes;\
 		pip3 install --use-feature=2020-resolver --user -I sh==${PY_SH_VER};\
-		pip3 install --use-feature=2020-resolver --user -I molecule==${PY_MOLECULE_VER};\
+		pip3 install --use-feature=2020-resolver --user -I molecule[docker]==${PY_MOLECULE_VER};\
 		pip3 install --use-feature=2020-resolver --user -I ansible-lint==${PY_ANSIBLE_LINT_VER};\
 		pip3 install --use-feature=2020-resolver --user -I yamllint==${PY_YAMLINT_VER};\
 	else\
 		echo "# CircleCI molecule dependencies setup";\
 		pip3 install --upgrade pip==${PY_PIP_VER};\
 		pip3 install --use-feature=2020-resolver --user -I sh==${PY_SH_VER};\
-		pip3 install --use-feature=2020-resolver -I molecule==${PY_MOLECULE_VER};\
+		pip3 install --use-feature=2020-resolver -I molecule[docker]==${PY_MOLECULE_VER};\
 		pip3 install --use-feature=2020-resolver -I ansible-lint==${PY_ANSIBLE_LINT_VER};\
 		pip3 install --use-feature=2020-resolver -I yamllint==${PY_YAMLINT_VER};\
 	fi;
