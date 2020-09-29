@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.29"></a>
+## [v0.0.29] - 2020-09-29
+
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- BBL-381 | renaming node mk
+
+
 <a name="v0.0.28"></a>
 ## [v0.0.28] - 2020-09-28
 
@@ -198,7 +205,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.28...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.29...HEAD
+[v0.0.29]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.28...v0.0.29
 [v0.0.28]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.27...v0.0.28
 [v0.0.27]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.26...v0.0.27
 [v0.0.26]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.25...v0.0.26
