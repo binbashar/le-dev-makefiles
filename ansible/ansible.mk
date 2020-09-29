@@ -15,8 +15,8 @@ help:
 # ANSIBLE                                                      #
 #==============================================================#
 init-ansible-py: ## Install required ansible version
-		pip install --user --upgrade pip==${PY_PIP_VER}
-		pip install --user -I ansible==${PY_ANSIBLE_VER}
+		pip3 install --user --upgrade pip==${PY_PIP_VER}
+		pip3 install --user -I ansible==${PY_ANSIBLE_VER}
 
 init: ## Install required ansible roles
 	ansible-galaxy install -f -r requirements.yml --roles-path ./roles/
