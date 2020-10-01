@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.33"></a>
+## [v0.0.33] - 2020-10-01
+
+- BBL-381 | adding missing : at circleci config
+- BBL-381 | adding context to sumologic workflow
+
+
 <a name="v0.0.32"></a>
 ## [v0.0.32] - 2020-10-01
 
@@ -225,7 +232,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.32...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.33...HEAD
+[v0.0.33]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.32...v0.0.33
 [v0.0.32]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.31...v0.0.32
 [v0.0.31]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.30...v0.0.31
 [v0.0.30]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.29...v0.0.30
