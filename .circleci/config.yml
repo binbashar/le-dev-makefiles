@@ -48,8 +48,8 @@ jobs:
 # CircleCI orbs are open-source, shareable packages of parameterizable reusable
 # configuration elements, including jobs, commands, and executors.
 #
-#orbs:
-#  sumologic: circleci/sumologic@1.0.6
+orbs:
+  sumologic: circleci/sumologic@1.0.6
 
 #
 # Jobs workflow
@@ -58,8 +58,7 @@ workflows:
   version: 2
   test_and_release:
     jobs:
-#      - sumologic/workflow-collector
-#      - sumologic/job-collector
+      - sumologic/workflow-collector
       - release-version-with-changelog:
           context: binbashar-org-global-context
           filters:
