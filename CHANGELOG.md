@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.32"></a>
+## [v0.0.32] - 2020-10-01
+
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- BBL-381 | adding sumo-logic logs collector
+
+
 <a name="v0.0.31"></a>
 ## [v0.0.31] - 2020-09-29
 
@@ -218,7 +225,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.31...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.32...HEAD
+[v0.0.32]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.31...v0.0.32
 [v0.0.31]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.30...v0.0.31
 [v0.0.30]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.29...v0.0.30
 [v0.0.29]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.28...v0.0.29
