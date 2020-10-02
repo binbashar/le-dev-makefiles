@@ -8,6 +8,9 @@ jobs:
     machine:
       image: ubuntu-1604:202007-01 # Ubuntu 16.04, Docker v19.03.12, Docker Compose v1.26.1
 
+      # This job has been blocked because Docker Layer Caching is not available on your plan.
+      # Please upgrade to continue building.
+      # Note: you will need to push a new commit or call the API to rerun the pipeline.
       docker_layer_caching: false
 
     environment:
