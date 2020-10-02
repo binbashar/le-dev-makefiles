@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.36"></a>
+## [v0.0.36] - 2020-10-02
+
+- BBL-381 | adding inline comment to circleci config
+
+
 <a name="v0.0.35"></a>
 ## [v0.0.35] - 2020-10-02
 
@@ -244,7 +250,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.35...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.36...HEAD
+[v0.0.36]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.35...v0.0.36
 [v0.0.35]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.34...v0.0.35
 [v0.0.34]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.33...v0.0.34
 [v0.0.33]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.32...v0.0.33
