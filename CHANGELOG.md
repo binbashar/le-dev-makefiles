@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.38"></a>
+## [v0.0.38] - 2020-10-05
+
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- BBL-381 | fixing ansible-roles.mk rsync cmd
+
+
 <a name="v0.0.37"></a>
 ## [v0.0.37] - 2020-10-05
 
@@ -257,7 +264,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.37...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.38...HEAD
+[v0.0.38]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.37...v0.0.38
 [v0.0.37]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.36...v0.0.37
 [v0.0.36]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.35...v0.0.36
 [v0.0.35]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.34...v0.0.35
