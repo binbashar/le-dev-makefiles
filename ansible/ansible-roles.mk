@@ -61,10 +61,10 @@ test-molecule-local: ## Run playbook tests w/ molecule using the local code
 
 	@if [[ "$$(cd ../ && ls |grep '${ANSIBLE_REPO_ROLE_NAME}')" =~ "${ANSIBLE_REPO_ROLE_NAME}" ]]; then\
 		echo "# Local molecule role setup";\
-		cd .. && rsync -Rr --exclude '${ANSIBLE_REPO_ROLE_NAME}/molecule' ${ANSIBLE_REPO_ROLE_NAME}/ ${ANSIBLE_REPO_ROLE_NAME}/molecule/default/roles/${ANSIBLE_GALAXY_ROLE_NAME}/;\
+		cd .. && rsync -av --exclude '${ANSIBLE_REPO_ROLE_NAME}/molecule' ${ANSIBLE_REPO_ROLE_NAME}/ ${ANSIBLE_REPO_ROLE_NAME}/molecule/default/roles/${ANSIBLE_GALAXY_ROLE_NAME}/;\
 	else\
 		echo "# CircleCI molecule role setup";\
-		cd .. rsync -Rr --exclude 'project/molecule' project/ ${ANSIBLE_REPO_ROLE_NAME}/molecule/default/roles/${ANSIBLE_GALAXY_ROLE_NAME}/;\
+		cd .. rsync -av --exclude 'project/molecule' project/ ${ANSIBLE_REPO_ROLE_NAME}/molecule/default/roles/${ANSIBLE_GALAXY_ROLE_NAME}/;\
 	fi;
 
 	OS_VER=(${OS_VER_LIST});\
