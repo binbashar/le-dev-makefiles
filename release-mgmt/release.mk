@@ -16,7 +16,7 @@ docker run --rm \
 -v ${LOCAL_OS_SSH_DIR}:/root/.ssh \
 -v ${LOCAL_OS_GIT_CONF_DIR}:/etc/gitconfig \
 --entrypoint=/opt/semtag/semtag/semtag \
--it binbash/git-release
+-it binbash/git-release:0.0.2
 endef
 
 GIT_SEMTAG_VER_PATCH := $(shell ${GIT_SEMTAG_CMD_PREFIX} final -s patch -o | grep -v 'Warning: Permanently added the RSA host key for IP address')
