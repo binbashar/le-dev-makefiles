@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.40"></a>
+## [v0.0.40] - 2020-10-06
+
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- BBL-313 | adding docker-hub-buil-push.mk
+
+
 <a name="v0.0.39"></a>
 ## [v0.0.39] - 2020-10-06
 
@@ -270,7 +277,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.39...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.40...HEAD
+[v0.0.40]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.39...v0.0.40
 [v0.0.39]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.38...v0.0.39
 [v0.0.38]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.37...v0.0.38
 [v0.0.37]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.36...v0.0.37
