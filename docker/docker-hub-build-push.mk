@@ -9,10 +9,10 @@ help:
 # DOCKER-COMPOSE                                               #
 #==============================================================#
 build: ## build docker image
-	docker build -t ${DOCKER_REPO_NAME}/${DOCKER_IMG_NAME}:${DOCKER_TAG} -t ${DOCKER_REPO_NAME}/${DOCKER_IMG_NAME}:latest .
+	docker build -t ${DOCKER_REPO_NAME}/${DOCKER_IMG_NAME}:${DOCKER_TAG} .
 
 build-no-cache: ## build docker image no cache
-	docker build --no-cache -t ${DOCKER_REPO_NAME}/${DOCKER_IMG_NAME}:${DOCKER_TAG} -t ${DOCKER_REPO_NAME}/${DOCKER_IMG_NAME}:latest .
+	docker build --no-cache -t ${DOCKER_REPO_NAME}/${DOCKER_IMG_NAME}:${DOCKER_TAG} .
 
 push: ## push docker image to registry
-	docker push ${DOCKER_REPO_NAME}/${DOCKER_IMG_NAME}:${DOCKER_TAG} && docker push ${DOCKER_REPO_NAME}/${DOCKER_IMG_NAME}:latest
+	docker push ${DOCKER_REPO_NAME}/${DOCKER_IMG_NAME}:${DOCKER_TAG}
