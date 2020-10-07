@@ -1,5 +1,6 @@
 .PHONY: help
-SHELL         := /bin/bash
+SHELL            := /bin/bash
+DOCKER_REPO_NAME := binbash
 
 help:
 	@echo 'Available Commands:'
@@ -9,10 +10,49 @@ help:
 # DOCKER-COMPOSE                                               #
 #==============================================================#
 build: ## build docker image
-	docker build -t binbash/${DOCKER_IMG_NAME}:${DOCKER_TAG} --build-arg DOCKER_TAG='${DOCKER_TAG}' .
+	LIST=(${DOCKER_TAG_LIST});\
+    OLDIFS=$$IFS;\
+    IFS=',';\
+    for i in "$${LIST[@]}"; do\
+		set -- $$i;\
+        echo -----------------------;\
+        echo DOCKER TAG: $$1;\
+        echo -----------------------;\
+				docker build -t ${DOCKER_REPO_NAME}/${DOCKER_IMG_NAME}:$$1 --build-arg DOCKER_TAG=$$1 .;\
+        echo -----------------------;\
+        echo "DOCKER BUILD DONE";\
+        echo "";\
+	done;\
+	IFS=$$OLDIFS
 
 build-no-cache: ## build docker image no cache
-	docker build --no-cache -t binbash/${DOCKER_IMG_NAME}:${DOCKER_TAG} --build-arg DOCKER_TAG='${DOCKER_TAG}' .
+	LIST=(${DOCKER_TAG_LIST});\
+    OLDIFS=$$IFS;\
+    IFS=',';\
+    for i in "$${LIST[@]}"; do\
+		set -- $$i;\
+        echo -----------------------;\
+        echo DOCKER TAG: $$1;\
+        echo -----------------------;\
+				docker build --no-cache -t ${DOCKER_REPO_NAME}/${DOCKER_IMG_NAME}:$$1 --build-arg DOCKER_TAG=$$1 .;\
+        echo -----------------------;\
+        echo "DOCKER BUILD DONE";\
+        echo "";\
+	done;\
+	IFS=$$OLDIFS
 
 push: ## push docker image to registry
-	docker push binbash/${DOCKER_IMG_NAME}:${DOCKER_TAG}
+	LIST=(${DOCKER_TAG_LIST});\
+    OLDIFS=$$IFS;\
+    IFS=',';\
+    for i in "$${LIST[@]}"; do\
+		set -- $$i;\
+        echo -----------------------;\
+        echo DOCKER TAG: $$1;\
+        echo -----------------------;\
+				docker push ${DOCKER_REPO_NAME}/${DOCKER_IMG_NAME}:$$1;\
+        echo -----------------------;\
+        echo "DOCKER BUILD DONE";\
+        echo "";\
+	done;\
+	IFS=$$OLDIFS

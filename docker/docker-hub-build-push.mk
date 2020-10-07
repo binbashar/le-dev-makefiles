@@ -1,5 +1,6 @@
 .PHONY: help
-SHELL         := /bin/bash
+SHELL            := /bin/bash
+DOCKER_REPO_NAME := binbash
 
 help:
 	@echo 'Available Commands:'
