@@ -3,8 +3,8 @@ SHELL         := /bin/bash
 
 # Local Env VARs
 #
-LOCAL_OS_PWD_DIR  := $(shell pwd)
-LOCAL_OS_HOME_DIR := $(shell echo ~)
+LOCAL_OS_PWD_DIR  = $(shell pwd)
+LOCAL_OS_HOME_DIR = $(shell echo ~)
 LOCAL_OS_KUBE_DIR := ${LOCAL_OS_HOME_DIR}/.kube/bb
 
 # Docker VARs

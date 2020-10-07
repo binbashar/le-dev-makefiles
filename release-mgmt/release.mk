@@ -1,10 +1,10 @@
 .PHONY: help
 SHELL                 := /bin/bash
-LOCAL_OS_USER_ID      := $(shell id -u)
-LOCAL_OS_GROUP_ID     := $(shell id -g)
+LOCAL_OS_USER_ID      = $(shell id -u)
+LOCAL_OS_GROUP_ID     = $(shell id -g)
 LOCAL_OS_SSH_DIR      := ~/.ssh
 LOCAL_OS_GIT_CONF_DIR := ~/.gitconfig
-LOCAL_PWD_DIR         := $(shell pwd)
+LOCAL_PWD_DIR         = $(shell pwd)
 
 #
 # GIT-RELEASE
