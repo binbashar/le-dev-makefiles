@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.43"></a>
+## [v0.0.43] - 2020-10-07
+
+- BBL-313 | renaming arg var at docker-hub-build-push-single-arg.mk
+
+
 <a name="v0.0.42"></a>
 ## [v0.0.42] - 2020-10-07
 
@@ -291,7 +297,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.42...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.43...HEAD
+[v0.0.43]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.42...v0.0.43
 [v0.0.42]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.41...v0.0.42
 [v0.0.41]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.40...v0.0.41
 [v0.0.40]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.39...v0.0.40
