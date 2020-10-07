@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.44"></a>
+## [v0.0.44] - 2020-10-07
+
+- Change some of the variables in Release Mgmt makefile to use lazy set instead of immediate set in order to avoid commands to be run at variable definition time ([#1](https://github.com/binbashar/le-dev-makefiles/issues/1))
+
+
 <a name="v0.0.43"></a>
 ## [v0.0.43] - 2020-10-07
 
@@ -297,7 +303,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.43...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.44...HEAD
+[v0.0.44]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.43...v0.0.44
 [v0.0.43]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.42...v0.0.43
 [v0.0.42]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.41...v0.0.42
 [v0.0.41]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.40...v0.0.41
