@@ -7,6 +7,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.45"></a>
+## [v0.0.45] - 2020-10-08
+
+- BBL-313 | updating inline comment as DOCKER
+- BBL-313 | docker makefiles updated and new tag list ones added
+- Change makefile shell associated variables to use lazy set by default instead of immediate set
+
+
 <a name="v0.0.44"></a>
 ## [v0.0.44] - 2020-10-07
 
@@ -303,7 +311,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.44...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.45...HEAD
+[v0.0.45]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.44...v0.0.45
 [v0.0.44]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.43...v0.0.44
 [v0.0.43]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.42...v0.0.43
 [v0.0.42]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.41...v0.0.42
