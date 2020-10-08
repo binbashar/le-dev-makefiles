@@ -7,7 +7,7 @@ DOCKER_TAG := v1.14.4
 
 LOCAL_OS_KUBE_DIR             := ~/.kube
 LOCAL_OS_RESOLV_CONF          := /etc/resolv.conf
-LOCAL_OS_USER                 := $(shell whoami)
+LOCAL_OS_USER                 = $(shell whoami)
 LOCAL_OS_HOME_DIR_ESCAPED     := \\/home\\/${LOCAL_OS_USER}
 DOCKER_IMG_NAME               := k8s-kubectx
 DOCKER_IMG_USER               := root

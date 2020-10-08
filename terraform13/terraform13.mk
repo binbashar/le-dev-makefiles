@@ -3,16 +3,16 @@ SHELL := /bin/bash
 
 PROJECT_SHORT                    := bb
 
-LOCAL_OS_USER_ID                 := $(shell id -u)
-LOCAL_OS_GROUP_ID                := $(shell id -g)
+LOCAL_OS_USER_ID                 = $(shell id -u)
+LOCAL_OS_GROUP_ID                = $(shell id -g)
 LOCAL_OS_SSH_DIR                 := ~/.ssh
 LOCAL_OS_GIT_CONF_DIR            := ~/.gitconfig
 LOCAL_OS_AWS_CONF_DIR            := ~/.aws/${PROJECT_SHORT}
 
-TF_PWD_DIR                       := $(shell pwd)
+TF_PWD_DIR                       = $(shell pwd)
 TF_PWD_CONT_DIR                  := "/go/src/project/"
-TF_PWD_CONFIG_DIR                := $(shell cd .. && cd config && pwd)
-TF_PWD_COMMON_CONFIG_DIR         := $(shell cd ../.. && cd config && pwd)
+TF_PWD_CONFIG_DIR                = $(shell cd .. && cd config && pwd)
+TF_PWD_COMMON_CONFIG_DIR         = $(shell cd ../.. && cd config && pwd)
 TF_VER                           := 0.13.2
 TF_DOCKER_BACKEND_CONF_VARS_FILE := /config/backend.config
 TF_DOCKER_ACCOUNT_CONF_VARS_FILE := /config/account.config

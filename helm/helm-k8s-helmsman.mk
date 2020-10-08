@@ -1,8 +1,8 @@
 .PHONY: help
 SHELL                := /bin/bash
 
-LOCAL_PWD            := $(shell pwd)
-LOCAL_PARENT_DIR     := $(shell basename "$$PWD")
+LOCAL_PWD            = $(shell pwd)
+LOCAL_PARENT_DIR     = $(shell basename "$$PWD")
 LOCAL_KUBE_CONFIG    := ~/.kube/bb/${LOCAL_PARENT_DIR}
 DOCKER_IMG_NAME      := praqma/helmsman:v3.4.3-helm-v3.2.1
 
