@@ -46,7 +46,6 @@ format: ## The terraform fmt is used to rewrite tf conf files to a canonical for
 format-check: ## The terraform fmt is used to rewrite tf conf files to a canonical format and style.
 	${TF_CMD_PREFIX} fmt -recursive -check ${TF_PWD_CONT_DIR}
 
-
 #==============================================================#
 # TERRAFORM HELPERS                                            #
 #==============================================================#
