@@ -36,7 +36,7 @@ build-no-cache: ## build docker image no cache
         echo -----------------------;\
 				docker build --no-cache -t ${DOCKER_REPO_NAME}/${DOCKER_IMG_NAME}:$$1 .;\
         echo -----------------------;\
-        echo "DOCKER BUILD DONE";\
+        echo "DOCKER BUILD NO-CACHE DONE";\
         echo "";\
 	done;\
 	IFS=$$OLDIFS
@@ -52,7 +52,7 @@ push: ## push docker image to registry
         echo -----------------------;\
 				docker push ${DOCKER_REPO_NAME}/${DOCKER_IMG_NAME}:$$1;\
         echo -----------------------;\
-        echo "DOCKER BUILD DONE";\
+        echo "DOCKER PUSH DONE";\
         echo "";\
 	done;\
 	IFS=$$OLDIFS
