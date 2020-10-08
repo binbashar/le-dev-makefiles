@@ -50,6 +50,12 @@ format-check: ## The terraform fmt is used to rewrite tf conf files to a canonic
 	# tf-0.12 yet
 	# ${TF_CMD_PREFIX} fmt -recursive -check ${TF_PWD_CONT_DIR}
 
+#==============================================================#
+# TERRAFORM HELPERS                                            #
+#==============================================================#
+pre-commit: ## Execute validation: pre-commit run --all-files.
+	pre-commit run --all-files
+
 tflint: ## TFLint is a Terraform linter for detecting errors that can not be detected by terraform plan (tf0.12 > 0.10.x).
 	docker run --rm \
 	-v ${LOCAL_OS_AWS_CONF_DIR}:/root/.aws \
