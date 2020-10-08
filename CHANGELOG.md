@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.48"></a>
+## [v0.0.48] - 2020-10-08
+
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- updating terraform12/13 w/ pre-commit cmd
+
+
 <a name="v0.0.47"></a>
 ## [v0.0.47] - 2020-10-08
 
@@ -324,7 +331,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.47...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.48...HEAD
+[v0.0.48]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.47...v0.0.48
 [v0.0.47]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.46...v0.0.47
 [v0.0.46]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.45...v0.0.46
 [v0.0.45]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.44...v0.0.45
