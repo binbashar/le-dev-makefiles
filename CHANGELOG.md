@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.52"></a>
+## [v0.0.52] - 2020-10-12
+
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- BBL-313 | improving params in docker makefile
+
+
 <a name="v0.0.51"></a>
 ## [v0.0.51] - 2020-10-08
 
@@ -351,7 +358,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.51...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.52...HEAD
+[v0.0.52]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.51...v0.0.52
 [v0.0.51]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.50...v0.0.51
 [v0.0.50]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.49...v0.0.50
 [v0.0.49]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.48...v0.0.49
