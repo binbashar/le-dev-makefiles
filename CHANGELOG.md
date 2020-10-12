@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.51"></a>
+## [v0.0.51] - 2020-10-08
+
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- BBL-381 | updating terraform13-root-context.mk to use tf 0.13.2 docker image
+
+
 <a name="v0.0.50"></a>
 ## [v0.0.50] - 2020-10-08
 
@@ -344,7 +351,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.50...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.51...HEAD
+[v0.0.51]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.50...v0.0.51
 [v0.0.50]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.49...v0.0.50
 [v0.0.49]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.48...v0.0.49
 [v0.0.48]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.47...v0.0.48
