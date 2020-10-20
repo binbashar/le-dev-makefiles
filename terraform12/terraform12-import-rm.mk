@@ -20,8 +20,6 @@ TF_DOCKER_COMMON_CONF_VARS_FILE  := /common-config/common.config
 TF_DOCKER_ENTRYPOINT             := /usr/local/go/bin/terraform
 TF_DOCKER_IMAGE                  := binbash/terraform-awscli
 
-TF_IMPORT_RESOURCE                := "aws_organizations_organizational_unit.bbl_apps_devstg"
-TF_IMPORT_RESOURCE_ID             := "ou-oz9d-yl3npduj"
 TF_RM_RESOURCE                    := "aws_organizations_organizational_unit.bbl_apps_devstg"
 
 define TF_CMD_PREFIX
@@ -49,7 +47,7 @@ help:
 #
 # Terraform Import & rm aux commands
 #
-import: ## terraform import resources - eg: make import TF_IMPORT_RESOURCE_LIST='${TF_IMPORT_RESOURCE_LIST_ARG}'
+import: ## terraform import resources - eg: make import'
 	REPOS=(${TF_IMPORT_RESOURCE_LIST});\
     OLDIFS=$$IFS;\
     IFS=',';\
@@ -62,8 +60,8 @@ import: ## terraform import resources - eg: make import TF_IMPORT_RESOURCE_LIST=
 			echo -----------------------;\
 			${TF_CMD_PREFIX} import \
 				-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
-				-var-file=${TF_DOCKER_BASE_CONF_VARS_FILE} \
-				-var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE} $$1 $$2;\
+				-var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE} \
+				-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} $$1 $$2;\
 			echo -----------------------;\
 			echo "TF SUCCESSFULLY IMPORTED $$1";\
 			cd ..;\
@@ -72,5 +70,5 @@ import: ## terraform import resources - eg: make import TF_IMPORT_RESOURCE_LIST=
 	done;\
 	IFS=$$OLDIFS
 
-state-rm: ## terraform rm resource from state - eg: make state-rm TF_RM_RESOURCE='${TF_RM_RESOURCE_ARG}'
+state-rm: ## terraform rm resource from state - eg: make state-rm'
 	${TF_CMD_PREFIX} state rm ${TF_RM_RESOURCE}

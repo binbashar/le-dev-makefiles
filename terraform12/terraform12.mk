@@ -83,9 +83,9 @@ plan: ## Preview terraform changes
 
 plan-detailed: ## Preview terraform changes with a more detailed output
 	${TF_CMD_PREFIX} plan -detailed-exitcode \
-	 -var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
-	 -var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
-	 -var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
+	-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
+	-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
+	-var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
 
 apply: apply-cmd tf-dir-chmod ## Make terraform apply any changes with dockerized binary
 apply-cmd:
