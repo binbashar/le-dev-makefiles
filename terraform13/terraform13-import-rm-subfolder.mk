@@ -3,8 +3,6 @@ include ../../../@bin/config/base.mk
 .PHONY: help
 SHELL := /bin/bash
 
-PROJECT_SHORT                    := flex
-
 LOCAL_OS_USER_ID                 = $(shell id -u)
 LOCAL_OS_GROUP_ID                = $(shell id -g)
 LOCAL_OS_SSH_DIR                 := ~/.ssh
