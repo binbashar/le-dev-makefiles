@@ -1,13 +1,7 @@
 -include ../../@bin/config/base.mk
 
 .PHONY: help
-
-.PHONY: help
-
-.PHONY: help
 SHELL                  := /bin/bash
-
-PROJECT_SHORT          := bb
 
 LOCAL_OS_USER_ID       = $(shell id -u)
 LOCAL_OS_GROUP_ID      = $(shell id -g)

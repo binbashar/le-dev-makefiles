@@ -12,21 +12,21 @@ LOCAL_OS_AWS_CONF_DIR            := ~/.aws/${PROJECT_SHORT}
 TF_PWD_DIR                       = $(shell pwd)
 TF_PWD_CONT_DIR                  := "/go/src/project/"
 TF_PWD_CONFIG_DIR                = $(shell cd ../ && cd config && pwd)
-TF_PWD_COMMON_CONFIG_DIR         = $(shell cd ../../ && cd config && pwd)
-TF_VER                           := 0.12.28
+TF_PWD_COMMON_CONFIG_DIR         = $(shell cd .. && cd common-config && pwd)
+TF_PWD_GITHUB_CONFIG_DIR         = $(shell cd .. && cd github-config && pwd)
+TF_VER                           := 0.13.2
 TF_DOCKER_BACKEND_CONF_VARS_FILE := /config/backend.config
-TF_DOCKER_ACCOUNT_CONF_VARS_FILE := /config/account.config
 TF_DOCKER_COMMON_CONF_VARS_FILE  := /common-config/common.config
-TF_DOCKER_ENTRYPOINT             := /usr/local/go/bin/terraform
-TF_DOCKER_IMAGE                  := binbash/terraform-awscli
-
-TF_RM_RESOURCE                    := "aws_organizations_organizational_unit.bbl_apps_devstg"
+TF_DOCKER_GITHUB_CONF_VARS_FILE  := /github-config/github.config
+TF_DOCKER_ENTRYPOINT             := /bin/terraform
+TF_DOCKER_IMAGE                  := binbash/terraform-awscli-slim
 
 define TF_CMD_PREFIX
 docker run --rm \
 -v ${TF_PWD_DIR}:${TF_PWD_CONT_DIR}:rw \
 -v ${TF_PWD_CONFIG_DIR}:/config \
 -v ${TF_PWD_COMMON_CONFIG_DIR}/common.config:${TF_DOCKER_COMMON_CONF_VARS_FILE} \
+-v ${TF_PWD_GITHUB_CONFIG_DIR}/github.config:${TF_DOCKER_GITHUB_CONF_VARS_FILE} \
 -v ${LOCAL_OS_SSH_DIR}:/root/.ssh \
 -v ${LOCAL_OS_GIT_CONF_DIR}:/etc/gitconfig \
 -v ${LOCAL_OS_AWS_CONF_DIR}:/root/.aws/${PROJECT_SHORT} \
@@ -60,8 +60,9 @@ import: ## terraform import resources - eg: make import'
 			echo -----------------------;\
 			${TF_CMD_PREFIX} import \
 				-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
-				-var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE} \
-				-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} $$1 $$2;\
+				-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
+				-var-file=${TF_DOCKER_GITHUB_CONF_VARS_FILE} $$1 $$2;\
+				$$1 $$2;\
 			echo -----------------------;\
 			echo "TF SUCCESSFULLY IMPORTED $$1";\
 			cd ..;\
