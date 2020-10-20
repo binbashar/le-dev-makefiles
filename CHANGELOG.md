@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.55"></a>
+## [v0.0.55] - 2020-10-20
+
+- BBL-192 | adding optional include sintext
+- BBL-192 | including base.mk to support custom configs for every makefile
+
+
 <a name="v0.0.54"></a>
 ## [v0.0.54] - 2020-10-20
 
@@ -373,7 +380,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.54...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.55...HEAD
+[v0.0.55]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.54...v0.0.55
 [v0.0.54]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.53...v0.0.54
 [v0.0.53]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.52...v0.0.53
 [v0.0.52]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.51...v0.0.52
