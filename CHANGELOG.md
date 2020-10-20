@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.57"></a>
+## [v0.0.57] - 2020-10-20
+
+- Merge branch 'feature/BB-192-makefiles-fix'
+- BBL-192 | upgrading to latest ansible 2.9.x ver
+
+
 <a name="v0.0.56"></a>
 ## [v0.0.56] - 2020-10-20
 
@@ -389,7 +396,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.56...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.57...HEAD
+[v0.0.57]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.56...v0.0.57
 [v0.0.56]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.55...v0.0.56
 [v0.0.55]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.54...v0.0.55
 [v0.0.54]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.53...v0.0.54
