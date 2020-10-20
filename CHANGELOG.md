@@ -7,6 +7,15 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.56"></a>
+## [v0.0.56] - 2020-10-20
+
+- BBL-192 | removing harcoded PROJECT_SHORT values
+- BBL-192 | adding support for terraform-github dockerized approach makefile
+- BBL-192 | removing duplicated code
+- BBL-192 | udpating assingment operator
+
+
 <a name="v0.0.55"></a>
 ## [v0.0.55] - 2020-10-20
 
@@ -380,7 +389,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.55...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.56...HEAD
+[v0.0.56]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.55...v0.0.56
 [v0.0.55]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.54...v0.0.55
 [v0.0.54]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.53...v0.0.54
 [v0.0.53]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.52...v0.0.53
