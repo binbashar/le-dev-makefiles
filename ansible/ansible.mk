@@ -7,7 +7,7 @@ SHELL := /bin/bash
 ANSIBLE_TAGS = $$(echo $@ | cut -d "-" -f 2- | sed "s/%*$$//")
 
 PY_PIP_VER := 20.2.3
-PY_ANSIBLE_VER := 2.9.6
+PY_ANSIBLE_VER := 2.9.14
 
 help:
 	@echo 'Available Commands:'
