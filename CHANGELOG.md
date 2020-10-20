@@ -7,6 +7,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.54"></a>
+## [v0.0.54] - 2020-10-20
+
+- BBL-192 | removing harcoded PROJET_SHORT VAR to gran precedence from include makefile
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- BBL-192 | removing project short var to favour make include precedency
+
+
 <a name="v0.0.53"></a>
 ## [v0.0.53] - 2020-10-20
 
@@ -365,7 +373,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.53...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.54...HEAD
+[v0.0.54]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.53...v0.0.54
 [v0.0.53]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.52...v0.0.53
 [v0.0.52]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.51...v0.0.52
 [v0.0.51]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.50...v0.0.51
