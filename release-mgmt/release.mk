@@ -1,3 +1,5 @@
+include ../../@bin/config/base.mk
+
 .PHONY: help
 SHELL                 := /bin/bash
 LOCAL_OS_USER_ID      = $(shell id -u)
