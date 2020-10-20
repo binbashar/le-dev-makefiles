@@ -1,10 +1,6 @@
 -include ../../@bin/config/base.mk
 
 .PHONY: help
-
-.PHONY: help
-
-.PHONY: help
 SHELL               := /bin/bash
 
 PY_PIP_VER          := 20.2.3
