@@ -1,4 +1,4 @@
--include ../../@bin/config/base.mk
+-include ../@bin/config/base.mk
 
 .PHONY: help
 SHELL := /bin/bash
