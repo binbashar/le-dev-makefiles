@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.60"></a>
+## [v0.0.60] - 2020-10-21
+
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- BBL-192 | adding pip installation compatibility flag in ansible.mk
+
+
 <a name="v0.0.59"></a>
 ## [v0.0.59] - 2020-10-21
 
@@ -410,7 +417,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.59...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.60...HEAD
+[v0.0.60]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.59...v0.0.60
 [v0.0.59]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.58...v0.0.59
 [v0.0.58]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.57...v0.0.58
 [v0.0.57]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.56...v0.0.57
