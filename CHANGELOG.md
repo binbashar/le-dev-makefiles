@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.58"></a>
+## [v0.0.58] - 2020-10-21
+
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- BBL-192 | upgrading ansible version + fixing path at tf-github makefile
+
+
 <a name="v0.0.57"></a>
 ## [v0.0.57] - 2020-10-20
 
@@ -396,7 +403,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.57...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.58...HEAD
+[v0.0.58]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.57...v0.0.58
 [v0.0.57]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.56...v0.0.57
 [v0.0.56]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.55...v0.0.56
 [v0.0.55]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.54...v0.0.55
