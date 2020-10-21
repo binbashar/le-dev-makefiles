@@ -11,7 +11,7 @@ LOCAL_OS_AWS_CONF_DIR            := ~/.aws/${PROJECT_SHORT}
 
 TF_PWD_DIR                       = $(shell pwd)
 TF_PWD_CONT_DIR                  := "/go/src/project/"
-TF_PWD_CONFIG_DIR                = $(shell cd .. && cd config && pwd)
+TF_PWD_CONFIG_DIR                = $(shell cd ../ && cd config && pwd)
 TF_PWD_COMMON_CONFIG_DIR         = $(shell cd .. && cd common-config && pwd)
 TF_PWD_GITHUB_CONFIG_DIR         = $(shell cd .. && cd github-config && pwd)
 TF_VER                           := 0.13.2
