@@ -6,8 +6,8 @@ SHELL := /bin/bash
 # ANSIBLE VARS
 ANSIBLE_TAGS = $$(echo $@ | cut -d "-" -f 2- | sed "s/%*$$//")
 
-PY_PIP_VER := 20.2.3
-PY_ANSIBLE_VER := 2.10.2
+PY_PIP_VER := 20.2.4
+PY_ANSIBLE_VER := 2.10.1
 
 help:
 	@echo 'Available Commands:'
