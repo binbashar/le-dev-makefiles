@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.62"></a>
+## [v0.0.62] - 2020-10-22
+
+- BBL-192 | adding make decrypt validation conditional to tf plan-detailed cmd
+- BBL-192 | adding auto make decrypt validation to make apply, plan and destroy
+
+
 <a name="v0.0.61"></a>
 ## [v0.0.61] - 2020-10-21
 
@@ -424,7 +431,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.61...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.62...HEAD
+[v0.0.62]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.61...v0.0.62
 [v0.0.61]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.60...v0.0.61
 [v0.0.60]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.59...v0.0.60
 [v0.0.59]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.58...v0.0.59
