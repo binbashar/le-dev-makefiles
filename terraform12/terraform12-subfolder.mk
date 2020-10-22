@@ -76,19 +76,43 @@ init-cmd:
 	-backend-config=${TF_DOCKER_BACKEND_CONF_VARS_FILE}
 
 plan: ## Preview terraform changes
+	@if [ -f ./*.enc ] && [ ! -f ./*.dec.tf ]; then\
+		echo "===============================================";\
+		echo "Decrypting secrets before running 'make apply',";\
+		echo "please enter your ansible-vault encryption key ";\
+		echo "===============================================";\
+		make decrypt;\
+	fi
+
 	${TF_CMD_PREFIX} plan \
 	-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
 	-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
 	-var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
 
 plan-detailed: ## Preview terraform changes with a more detailed output
+	@if [ -f ./*.enc ] && [ ! -f ./*.dec.tf ]; then\
+		echo "===============================================";\
+		echo "Decrypting secrets before running 'make apply',";\
+		echo "please enter your ansible-vault encryption key ";\
+		echo "===============================================";\
+		make decrypt;\
+	fi
+
 	${TF_CMD_PREFIX} plan -detailed-exitcode \
-	 -var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
-	 -var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
-	 -var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
+	-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
+	-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
+	-var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
 
 apply: apply-cmd tf-dir-chmod ## Make terraform apply any changes with dockerized binary
 apply-cmd:
+	@if [ -f ./*.enc ] && [ ! -f ./*.dec.tf ]; then\
+		echo "===============================================";\
+		echo "Decrypting secrets before running 'make apply',";\
+		echo "please enter your ansible-vault encryption key ";\
+		echo "===============================================";\
+		make decrypt;\
+	fi
+
 	${TF_CMD_PREFIX} apply \
 	-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
 	-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
@@ -101,6 +125,14 @@ output-json: ## Terraform output json fmt command is used to extract the value o
 	${TF_CMD_PREFIX} output -json
 
 destroy: ## Destroy all resources managed by terraform
+	@if [ -f ./*.enc ] && [ ! -f ./*.dec.tf ]; then\
+		echo "===============================================";\
+		echo "Decrypting secrets before running 'make apply',";\
+		echo "please enter your ansible-vault encryption key ";\
+		echo "===============================================";\
+		make decrypt;\
+	fi
+
 	${TF_CMD_PREFIX} destroy \
 	-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
 	-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
@@ -127,7 +159,7 @@ tflint-deep: ## TFLint is a Terraform linter for detecting errors that can not b
 	--aws-creds-file=/root/.aws/credentials \
 	--aws-region=${LOCAL_OS_AWS_REGION}
 
-force-unlock: ## Manually unlock the terraform state, eg: make ARGS="a94b0919-de5b-9b8f-4bdf-f2d7a3d47112" force-unlock
+force-unlock: ## Manually unlock the terraform state, eg make ARGS="a94b0919-de5b-9b8f-4bdf-f2d7a3d47112" force-unlock
 	${TF_CMD_PREFIX} force-unlock ${ARGS}
 
 decrypt: ## Decrypt secrets.tf via ansible-vault
@@ -140,12 +172,12 @@ encrypt: ## Encrypt secrets.dec.tf via ansible-vault
 validate-tf-layout: ## Validate Terraform layout to make sure it's set up properly
 	../../../@bin/scripts/validate-terraform-layout.sh
 
-cost-estimate-plan: ## Terraform plan output compatible with https://terraform-cost-estimation.com/
+cost-estimate-plan: ## Terraform plan output compatible with terraform-cost-estimation.com
 	curl -sLO https://raw.githubusercontent.com/antonbabenko/terraform-cost-estimation/master/terraform.jq
 	${TF_CMD_PREFIX} plan -out=plan.tfplan \
 	 -var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
 	 -var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
-	 -var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE} && \
+	 -var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
 	${TF_CMD_PREFIX} show -json plan.tfplan > plan.json
 	@echo ----------------------------------------------------------------------
 	cat plan.json \
@@ -155,7 +187,7 @@ cost-estimate-plan: ## Terraform plan output compatible with https://terraform-c
 	@echo ----------------------------------------------------------------------
 	@rm -rf terraform.jq plan.tfplan plan.json
 
-cost-estimate-state: ## Terraform state output compatible with https://terraform-cost-estimation.com/
+cost-estimate-state: ## Terraform state output compatible with terraform-cost-estimation.com
 	curl -sLO https://raw.githubusercontent.com/antonbabenko/terraform-cost-estimation/master/terraform.jq
 	${TF_CMD_PREFIX} state pull > state.json
 	@echo ----------------------------------------------------------------------
