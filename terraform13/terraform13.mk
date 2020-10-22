@@ -96,6 +96,14 @@ plan: ## Preview terraform changes
 	-var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
 
 plan-detailed: ## Preview terraform changes with a more detailed output
+	@if [ -f ./*.enc ] && [ ! -f ./*.dec.tf ]; then\
+		echo "===============================================";\
+		echo "Decrypting secrets before running 'make apply',";\
+		echo "please enter your ansible-vault encryption key ";\
+		echo "===============================================";\
+		make decrypt;\
+	fi
+
 	${TF_CMD_PREFIX} plan -detailed-exitcode \
 	-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
 	-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
