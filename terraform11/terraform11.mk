@@ -58,6 +58,14 @@ init-cmd:
 	-backend-config=${TF_DOCKER_BACKEND_CONF_VARS_FILE}
 
 plan: ## Preview terraform changes
+	@if [ -f ./*.enc ] && [ ! -f ./*.dec.tf ]; then\
+		echo "===============================================";\
+		echo "Decrypting secrets before running 'make apply',";\
+		echo "please enter your ansible-vault encryption key ";\
+		echo "===============================================";\
+		make decrypt;\
+	fi
+
 	${TF_CMD_PREFIX} plan \
 	-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
 	-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
@@ -65,9 +73,9 @@ plan: ## Preview terraform changes
 
 plan-detailed: ## Preview terraform changes with a more detailed output
 	${TF_CMD_PREFIX} plan -detailed-exitcode \
-	 -var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
-	 -var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
-	 -var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
+	-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
+	-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
+	-var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
 
 diff: ## Terraform plan with landscape
 	${TF_CMD_PREFIX} plan \
@@ -78,6 +86,14 @@ diff: ## Terraform plan with landscape
 
 apply: apply-cmd tf-dir-chmod ## Make terraform apply any changes with dockerized binary
 apply-cmd:
+	@if [ -f ./*.enc ] && [ ! -f ./*.dec.tf ]; then\
+		echo "===============================================";\
+		echo "Decrypting secrets before running 'make apply',";\
+		echo "please enter your ansible-vault encryption key ";\
+		echo "===============================================";\
+		make decrypt;\
+	fi
+
 	${TF_CMD_PREFIX} apply \
 	-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
 	-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
@@ -87,6 +103,14 @@ output: ## Terraform output command is used to extract the value of an output va
 	${TF_CMD_PREFIX} output
 
 destroy: ## Destroy all resources managed by terraform
+	@if [ -f ./*.enc ] && [ ! -f ./*.dec.tf ]; then\
+		echo "===============================================";\
+		echo "Decrypting secrets before running 'make apply',";\
+		echo "please enter your ansible-vault encryption key ";\
+		echo "===============================================";\
+		make decrypt;\
+	fi
+
 	${TF_CMD_PREFIX} destroy \
 	-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
 	-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
