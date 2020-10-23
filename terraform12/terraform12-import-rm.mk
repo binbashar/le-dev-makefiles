@@ -17,10 +17,8 @@ TF_VER                           := 0.12.28
 TF_DOCKER_BACKEND_CONF_VARS_FILE := /config/backend.config
 TF_DOCKER_ACCOUNT_CONF_VARS_FILE := /config/account.config
 TF_DOCKER_COMMON_CONF_VARS_FILE  := /common-config/common.config
-TF_DOCKER_ENTRYPOINT             := /usr/local/go/bin/terraform
-TF_DOCKER_IMAGE                  := binbash/terraform-awscli
-
-TF_RM_RESOURCE                    := "aws_organizations_organizational_unit.bbl_apps_devstg"
+TF_DOCKER_ENTRYPOINT             := /bin/terraform
+TF_DOCKER_IMAGE                  := binbash/terraform-awscli-slim
 
 define TF_CMD_PREFIX
 docker run --rm \

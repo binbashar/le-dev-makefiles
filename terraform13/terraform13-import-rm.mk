@@ -20,8 +20,6 @@ TF_DOCKER_COMMON_CONF_VARS_FILE  := /common-config/common.config
 TF_DOCKER_ENTRYPOINT             := /bin/terraform
 TF_DOCKER_IMAGE                  := binbash/terraform-awscli-slim
 
-TF_RM_RESOURCE                    := "aws_organizations_organizational_unit.bbl_apps_devstg"
-
 define TF_CMD_PREFIX
 docker run --rm \
 -v ${TF_PWD_DIR}:${TF_PWD_CONT_DIR}:rw \

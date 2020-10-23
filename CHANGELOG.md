@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.62"></a>
+## [v0.0.62] - 2020-10-22
+
+- BBL-192 | adding make decrypt validation conditional to tf plan-detailed cmd
+- BBL-192 | adding auto make decrypt validation to make apply, plan and destroy
+
+
 <a name="v0.0.61"></a>
 ## [v0.0.61] - 2020-10-21
 
