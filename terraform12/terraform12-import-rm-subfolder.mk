@@ -13,7 +13,7 @@ TF_PWD_DIR                       = $(shell pwd)
 TF_PWD_CONT_DIR                  := "/go/src/project/"
 TF_PWD_CONFIG_DIR                = $(shell cd ../../ && cd config && pwd)
 TF_PWD_COMMON_CONFIG_DIR         = $(shell cd ../../../ && cd config && pwd)
-TF_VER                           := 0.13.2
+TF_VER                           := 0.12.28
 TF_DOCKER_BACKEND_CONF_VARS_FILE := /config/backend.config
 TF_DOCKER_ACCOUNT_CONF_VARS_FILE := /config/account.config
 TF_DOCKER_COMMON_CONF_VARS_FILE  := /common-config/common.config
@@ -45,7 +45,7 @@ help:
 #
 # Terraform Import & rm aux commands
 #
-import: ## terraform import resources - eg: make import'
+import: ## terraform import resources - eg make import'
 	REPOS=(${TF_IMPORT_RESOURCE_LIST});\
     OLDIFS=$$IFS;\
     IFS=',';\
@@ -68,5 +68,8 @@ import: ## terraform import resources - eg: make import'
 	done;\
 	IFS=$$OLDIFS
 
-state-rm: ## terraform rm resource from state - eg: make'
+state-rm: ## terraform rm resource from state - eg make state-rm'
 	${TF_CMD_PREFIX} state rm ${TF_RM_RESOURCE}
+
+state-list: ## terraform state list - eg make state-list
+	${TF_CMD_PREFIX} state list
