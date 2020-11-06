@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.64"></a>
+## [v0.0.64] - 2020-11-06
+
+- Add path to common config to TF13 MFA makefile ([#9](https://github.com/binbashar/le-dev-makefiles/issues/9))
+
+
 <a name="v0.0.63"></a>
 ## [v0.0.63] - 2020-10-24
 
@@ -437,7 +443,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.63...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.64...HEAD
+[v0.0.64]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.63...v0.0.64
 [v0.0.63]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.62...v0.0.63
 [v0.0.62]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.61...v0.0.62
 [v0.0.61]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.60...v0.0.61
