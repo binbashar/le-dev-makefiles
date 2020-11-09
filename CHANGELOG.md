@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.65"></a>
+## [v0.0.65] - 2020-11-09
+
+- Create a subfolder version of the Makefile with MFA support ([#10](https://github.com/binbashar/le-dev-makefiles/issues/10))
+
+
 <a name="v0.0.64"></a>
 ## [v0.0.64] - 2020-11-06
 
@@ -443,7 +449,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.64...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.65...HEAD
+[v0.0.65]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.64...v0.0.65
 [v0.0.64]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.63...v0.0.64
 [v0.0.63]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.62...v0.0.63
 [v0.0.62]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.61...v0.0.62
