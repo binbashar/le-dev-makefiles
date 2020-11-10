@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.67"></a>
+## [v0.0.67] - 2020-11-10
+
+- Add Makefile for Github with MFA support ([#11](https://github.com/binbashar/le-dev-makefiles/issues/11))
+
+
 <a name="v0.0.66"></a>
 ## [v0.0.66] - 2020-11-09
 
@@ -455,7 +461,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.66...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.67...HEAD
+[v0.0.67]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.66...v0.0.67
 [v0.0.66]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.65...v0.0.66
 [v0.0.65]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.64...v0.0.65
 [v0.0.64]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.63...v0.0.64
