@@ -51,7 +51,7 @@ help:
 #==============================================================#
 # ANSIBLE                                                      #
 #==============================================================#
-pwd-dir-chmod: ## run chown in ./roles to grant that the docker mounted dir has the right permissions
+pwd-dir-chown: ## run chown in ./roles to grant that the docker mounted dir has the right permissions
 	@echo LOCAL_OS_USER_ID: ${LOCAL_OS_USER_ID}
 	@echo LOCAL_OS_GROUP_ID: ${LOCAL_OS_GROUP_ID}
 	sudo chown -R ${LOCAL_OS_USER_ID}:${LOCAL_OS_GROUP_ID} ./roles
@@ -59,7 +59,7 @@ pwd-dir-chmod: ## run chown in ./roles to grant that the docker mounted dir has 
 shell: ## Initialize terraform backend, plugins, and modules
 	${ANSIBLE_CMD_BASH_PREFIX}
 
-init: init-cmd pwd-dir-chmod ## Install required ansible roles
+init: init-cmd pwd-dir-chown ## Install required ansible roles
 init-cmd:
 	${ANSIBLE_CMD_PREFIX} ansible-galaxy install -f -r requirements.yml --roles-path ./roles/
 
@@ -72,14 +72,14 @@ apply-%: ## Provision only the given tags (e.g. make apply-security-users or mak
 check: ## run ansible-playbook in Check Mode (“Dry Run”)
 	${ANSIBLE_CMD_PREFIX} ansible-playbook setup.yml --check
 
-decrypt: decrypt-cmd pwd-dir-chmod ## Decrypt secrets.tf via ansible-vault
+decrypt: decrypt-cmd pwd-dir-chown ## Decrypt secrets.tf via ansible-vault
 decrypt-cmd:
 	${ANSIBLE_CMD_PREFIX} ansible-vault decrypt --output ./group_vars/secrets.dec.yml ./group_vars/secrets.enc.yml
 
 decrypt-string: ## Decrypt encrypted string via ansible-vault - e.g. make ARG="your_encrypted_srting" decrypt-string
 	${ANSIBLE_CMD_PREFIX} bash ../@bin/scripts/ansible-vault-decrypt-str.sh ${ARG}
 
-encrypt: encrypt-cmd pwd-dir-chmod ## Encrypt secrets.dec.tf via ansible-vault
+encrypt: encrypt-cmd pwd-dir-chown ## Encrypt secrets.dec.tf via ansible-vault
 encrypt-cmd:
 	${ANSIBLE_CMD_PREFIX} ansible-vault encrypt --output ./group_vars/secrets.enc.yml ./group_vars/secrets.dec.yml \
 	&& rm -rf ./group_vars/secrets.dec.yml

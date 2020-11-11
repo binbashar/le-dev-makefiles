@@ -66,7 +66,7 @@ help:
 #==============================================================#
 # TERRAFORM                                                    #
 #==============================================================#
-tf-dir-chmod: ## run chown in ./.terraform to grant that the docker mounted dir has the right permissions
+tf-dir-chown: ## run chown in ./.terraform to grant that the docker mounted dir has the right permissions
 	@echo LOCAL_OS_USER_ID: ${LOCAL_OS_USER_ID}
 	@echo LOCAL_OS_GROUP_ID: ${LOCAL_OS_GROUP_ID}
 	sudo chown -R ${LOCAL_OS_USER_ID}:${LOCAL_OS_GROUP_ID} ./.terraform
@@ -77,7 +77,7 @@ shell: ## Initialize terraform backend, plugins, and modules
 version: ## Show terraform version
 	${TF_CMD_MFA_PREFIX} version
 
-init: init-cmd tf-dir-chmod ## Initialize terraform backend, plugins, and modules
+init: init-cmd tf-dir-chown ## Initialize terraform backend, plugins, and modules
 init-cmd:
 	${TF_CMD_MFA_PREFIX} init \
 		-backend-config=${TF_DOCKER_BACKEND_CONF_VARS_FILE}
@@ -94,7 +94,7 @@ plan-detailed: ## Preview terraform changes with a more detailed output
 		-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
 		-var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
 
-apply: apply-cmd tf-dir-chmod ## Make terraform apply any changes with dockerized binary
+apply: apply-cmd tf-dir-chown ## Make terraform apply any changes with dockerized binary
 apply-cmd:
 	${TF_CMD_MFA_PREFIX} apply \
 		-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
