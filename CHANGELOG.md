@@ -7,6 +7,16 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.0.68"></a>
+## [v0.0.68] - 2020-11-11
+
+- BBL-242 | adding missing space at ansible.mk
+- BBL-242 | minor in-line comment correction chmod per chown
+- BBL-242 | encrypt cmd post chown added
+- BBL-242 | ansible.mk updated to use new docker image approach
+- BBL-242 | correcting minor in-line comment typo
+
+
 <a name="v0.0.67"></a>
 ## [v0.0.67] - 2020-11-10
 
@@ -461,7 +471,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.67...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.68...HEAD
+[v0.0.68]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.67...v0.0.68
 [v0.0.67]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.66...v0.0.67
 [v0.0.66]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.65...v0.0.66
 [v0.0.65]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.64...v0.0.65
