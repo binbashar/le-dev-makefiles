@@ -56,6 +56,7 @@ pwd-dir-chown: ## run chown in ./roles to grant that the docker mounted dir has 
 	@echo LOCAL_OS_GROUP_ID: ${LOCAL_OS_GROUP_ID}
 	sudo chown -R ${LOCAL_OS_USER_ID}:${LOCAL_OS_GROUP_ID} ./roles
 	sudo chown -R ${LOCAL_OS_USER_ID}:${LOCAL_OS_GROUP_ID} ./group_vars
+
 shell: ## Initialize terraform backend, plugins, and modules
 	${ANSIBLE_CMD_BASH_PREFIX}
 
