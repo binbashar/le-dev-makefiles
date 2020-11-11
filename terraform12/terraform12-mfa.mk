@@ -66,7 +66,7 @@ help:
 #==============================================================#
 # TERRAFORM                                                    #
 #==============================================================#
-tf-dir-chmod: ## run chown in ./.terraform to gran that the docker mounted dir has the right permissions
+tf-dir-chmod: ## run chown in ./.terraform to grant that the docker mounted dir has the right permissions
 	@echo LOCAL_OS_USER_ID: ${LOCAL_OS_USER_ID}
 	@echo LOCAL_OS_GROUP_ID: ${LOCAL_OS_GROUP_ID}
 	sudo chown -R ${LOCAL_OS_USER_ID}:${LOCAL_OS_GROUP_ID} ./.terraform
