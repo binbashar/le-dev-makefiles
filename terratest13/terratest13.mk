@@ -28,7 +28,7 @@ TERRATEST_DOCKER_WORKDIR    := ${TF_PWD_CONT_DIR}/tests
 # TERRAFORM
 #
 define TF_CMD_PREFIX
-docker run --rm \
+docker run --security-opt="label:disable" --rm \
 -v ${TF_PWD_DIR}:${TF_PWD_CONT_DIR}:rw \
 --entrypoint=${TF_DOCKER_ENTRYPOINT} \
 -w ${TF_PWD_CONT_DIR} \
@@ -39,7 +39,7 @@ endef
 # TERRATEST
 #
 define TERRATEST_GO_CMD_PREFIX
-docker run --rm \
+docker run --security-opt="label:disable" --rm \
 -v ${TF_PWD_DIR}:${TF_PWD_CONT_DIR}:rw \
 -v ${LOCAL_OS_SSH_DIR}:/root/.ssh \
 -v ${LOCAL_OS_GIT_CONF_DIR}:/etc/gitconfig \
@@ -51,7 +51,7 @@ docker run --rm \
 endef
 
 define TERRATEST_GO_CMD_BASH_PREFIX
-docker run --rm \
+docker run --security-opt="label:disable" --rm \
 -v ${TF_PWD_DIR}:${TF_PWD_CONT_DIR}:rw \
 -v ${LOCAL_OS_SSH_DIR}:/root/.ssh \
 -v ${LOCAL_OS_GIT_CONF_DIR}:/etc/gitconfig \
@@ -64,7 +64,7 @@ docker run --rm \
 endef
 
 define TERRATEST_DEP_CMD_PREFIX
-docker run --rm \
+docker run --security-opt="label:disable" --rm \
 -v ${TF_PWD_DIR}:${TF_PWD_CONT_DIR}:rw \
 -v ${LOCAL_OS_SSH_DIR}:/root/.ssh \
 -v ${LOCAL_OS_GIT_CONF_DIR}:/etc/gitconfig \
@@ -84,7 +84,7 @@ pre-commit: ## Execute validation: pre-commit run --all-files.
 	pre-commit run --all-files
 
 terraform-docs: ## A utility to generate documentation from Terraform 0.12 modules in various output formats.
-	docker run --rm \
+	docker run --security-opt="label:disable" --rm \
   	-v $$(pwd):/data \
   	cytopia/terraform-docs:0.9.1 \
   	terraform-docs-012 --sort-inputs-by-required --with-aggregate-type-defaults markdown table .

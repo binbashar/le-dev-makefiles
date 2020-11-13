@@ -1,9 +1,10 @@
 -include ../../@bin/config/base.mk
 
 .PHONY: help
-SHELL                    := /bin/bash
-MAKEFILE_PATH            := ./Makefile
-MAKEFILES_DIR            := ./@bin/makefiles
+SHELL         := /bin/bash
+MAKEFILE_PATH := ./Makefile
+MAKEFILES_DIR := ./@bin/makefiles
+MAKEFILES_VER := v0.0.68
 
 help:
 	@echo 'Available Commands:'
@@ -15,7 +16,8 @@ help:
 init-makefiles: ## initialize makefiles
 	rm -rf ${MAKEFILES_DIR}
 	mkdir -p ${MAKEFILES_DIR}
-	git clone https://github.com/binbashar/le-dev-makefiles.git ${MAKEFILES_DIR}
+	git clone https://github.com/binbashar/le-dev-makefiles.git ${MAKEFILES_DIR} -q
+	cd ${MAKEFILES_DIR} && git checkout ${MAKEFILES_VER} -q
 
 -include ${MAKEFILES_DIR}/circleci/circleci.mk
 -include ${MAKEFILES_DIR}/release-mgmt/release.mk

@@ -22,7 +22,7 @@ TF_DOCKER_ENTRYPOINT             := /bin/terraform
 TF_DOCKER_IMAGE                  := binbash/terraform-awscli-slim
 
 define TF_CMD_PREFIX
-docker run --rm \
+docker run --security-opt="label:disable" --rm \
 -v ${TF_PWD_DIR}:${TF_PWD_CONT_DIR}:rw \
 -v ${TF_PWD_CONFIG_DIR}:/config \
 -v ${TF_PWD_COMMON_CONFIG_DIR}/common.config:${TF_DOCKER_COMMON_CONF_VARS_FILE} \

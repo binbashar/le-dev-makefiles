@@ -22,7 +22,7 @@ TF_DOCKER_ENTRYPOINT             := /bin/terraform
 TF_DOCKER_IMAGE                  := binbash/terraform-awscli
 
 define TF_CMD_PREFIX
-docker run --rm \
+docker run --security-opt="label:disable" --rm \
 -v ${TF_PWD_DIR}:${TF_PWD_CONT_DIR}:rw \
 -v ${TF_PWD_CONFIG_DIR}:/config \
 -v ${TF_PWD_COMMON_CONFIG_DIR}/common.config:${TF_DOCKER_COMMON_CONF_VARS_FILE} \
@@ -38,7 +38,7 @@ docker run --rm \
 endef
 
 define TF_CMD_BASH_PREFIX
-docker run --rm \
+docker run --security-opt="label:disable" --rm \
 -v ${TF_PWD_DIR}:${TF_PWD_CONT_DIR}:rw \
 -v ${TF_PWD_CONFIG_DIR}:/config \
 -v ${TF_PWD_COMMON_CONFIG_DIR}/common.config:${TF_DOCKER_COMMON_CONF_VARS_FILE} \
@@ -69,7 +69,7 @@ shell: ## Initialize terraform backend, plugins, and modules
 	${TF_CMD_BASH_PREFIX}
 
 version: ## Show terraform version
-	docker run --rm \
+	docker run --security-opt="label:disable" --rm \
 	--entrypoint=${TF_DOCKER_ENTRYPOINT} \
 	-t ${TF_DOCKER_IMAGE}:${TF_VER} version
 
@@ -119,13 +119,13 @@ format-check: ## The terraform fmt is used to rewrite tf conf files to a canonic
 	${TF_CMD_PREFIX} fmt -recursive -check ${TF_PWD_CONT_DIR}
 
 tflint: ## TFLint is a Terraform linter for detecting errors that can not be detected by terraform plan (tf0.12 > 0.10.x).
-	docker run --rm \
+	docker run --security-opt="label:disable" --rm \
 	-v ${LOCAL_OS_AWS_CONF_DIR}:/root/.aws \
 	-v ${TF_PWD_DIR}:/data \
 	-t wata727/tflint:0.14.0
 
 tflint-deep: ## TFLint is a Terraform linter for detecting errors that can not be detected by terraform plan (tf0.12 > 0.10.x).
-	docker run --rm \
+	docker run --security-opt="label:disable" --rm \
 	-v ${LOCAL_OS_AWS_CONF_DIR}:/root/.aws \
 	-v ${TF_PWD_DIR}:/data \
 	-t wata727/tflint:0.14.0 --deep \

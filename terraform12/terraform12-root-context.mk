@@ -16,7 +16,7 @@ TF_DOCKER_ENTRYPOINT             := /bin/terraform
 TF_DOCKER_IMAGE                  := binbash/terraform-awscli-slim
 
 define TF_CMD_PREFIX
-docker run --rm \
+docker run --security-opt="label:disable" --rm \
 -v ${TF_PWD_DIR}:${TF_PWD_CONT_DIR}:rw \
 -v ${LOCAL_OS_SSH_DIR}:/root/.ssh \
 -v ${LOCAL_OS_GIT_CONF_DIR}:/etc/gitconfig \
@@ -36,7 +36,7 @@ help:
 # TERRAFORM                                                    #
 #==============================================================#
 version: ## Show terraform version
-	docker run --rm \
+	docker run --security-opt="label:disable" --rm \
 	--entrypoint=${TF_DOCKER_ENTRYPOINT} \
 	-t ${TF_DOCKER_IMAGE}:${TF_VER} version
 
@@ -53,13 +53,13 @@ pre-commit: ## Execute validation: pre-commit run --all-files.
 	pre-commit run --all-files
 
 tflint: ## TFLint is a Terraform linter for detecting errors that can not be detected by terraform plan (tf0.12 > 0.10.x).
-	docker run --rm \
+	docker run --security-opt="label:disable" --rm \
 	-v ${LOCAL_OS_AWS_CONF_DIR}:/root/.aws \
 	-v ${TF_PWD_DIR}:/data \
 	-t wata727/tflint:0.14.0
 
 tflint-deep: ## TFLint is a Terraform linter for detecting errors that can not be detected by terraform plan (tf0.12 > 0.10.x).
-	docker run --rm \
+	docker run --security-opt="label:disable" --rm \
 	-v ${LOCAL_OS_AWS_CONF_DIR}:/root/.aws \
 	-v ${TF_PWD_DIR}:/data \
 	-t wata727/tflint:0.14.0 --deep \
