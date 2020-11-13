@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.1.0"></a>
+## [v0.1.0] - 2020-11-13
+
+- BBL-192 | releasing minor ver
+- BBL-192 | docker SElinux support -> use –security-opt. This gives it the appropriate security profile, instead of giving away too much permissions within the container.
+
+
 <a name="v0.0.68"></a>
 ## [v0.0.68] - 2020-11-11
 
@@ -471,7 +478,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.68...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.0...HEAD
+[v0.1.0]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.68...v0.1.0
 [v0.0.68]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.67...v0.0.68
 [v0.0.67]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.66...v0.0.67
 [v0.0.66]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.65...v0.0.66
