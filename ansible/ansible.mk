@@ -18,7 +18,7 @@ ANSIBLE_VER								:= 2.10.3
 ANSIBLE_DOCKER_IMAGE			:= binbash/ansible
 
 define ANSIBLE_CMD_PREFIX
-docker run --rm \
+docker run --security-opt="label:disable" --rm \
 -v ${ANSIBLE_PWD_ROOT_DIR}:${ANSIBLE_CONT_PWD_DIR}:rw \
 -v ${LOCAL_OS_SSH_DIR}:/${ANSIBLE_CONT_USER}/.ssh/${PROJECT_SHORT} \
 -v ${LOCAL_OS_GIT_CONF_DIR}:/etc/gitconfig \
@@ -30,7 +30,7 @@ docker run --rm \
 endef
 
 define ANSIBLE_CMD_BASH_PREFIX
-docker run --rm \
+docker run --security-opt="label:disable" --rm \
 -v ${ANSIBLE_PWD_ROOT_DIR}:${ANSIBLE_CONT_PWD_DIR}:rw \
 -v ${LOCAL_OS_SSH_DIR}:/${ANSIBLE_CONT_USER}/.ssh/${PROJECT_SHORT} \
 -v ${LOCAL_OS_GIT_CONF_DIR}:/etc/gitconfig \

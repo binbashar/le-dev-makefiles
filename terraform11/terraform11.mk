@@ -21,7 +21,7 @@ TF_DOCKER_ENTRYPOINT             := /usr/local/go/bin/terraform
 TF_DOCKER_IMAGE                  := binbash/terraform-awscli
 
 define TF_CMD_PREFIX
-docker run --rm \
+docker run --security-opt="label:disable" --rm \
 -v ${TF_PWD_DIR}:${TF_PWD_CONT_DIR}:rw \
 -v ${TF_PWD_CONFIG_DIR}:/config \
 -v ${TF_PWD_COMMON_CONFIG_DIR}/common.config:${TF_DOCKER_COMMON_CONF_VARS_FILE} \
@@ -48,7 +48,7 @@ tf-dir-chown: ## run chown in ./.terraform to grant that the docker mounted dir 
 	sudo chown -R ${LOCAL_OS_USER_ID}:${LOCAL_OS_GROUP_ID} ./.terraform
 
 version: ## Show terraform version
-	docker run --rm \
+	docker run --security-opt="label:disable" --rm \
 	--entrypoint=${TF_DOCKER_ENTRYPOINT} \
 	-t ${TF_DOCKER_IMAGE}:${TF_VER} version
 
