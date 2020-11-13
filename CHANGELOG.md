@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.1.1"></a>
+## [v0.1.1] - 2020-11-13
+
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- BBL-192 | releasing patch for CI consistency
+
+
 <a name="v0.1.0"></a>
 ## [v0.1.0] - 2020-11-13
 
@@ -478,7 +485,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.1...HEAD
+[v0.1.1]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.0...v0.1.1
 [v0.1.0]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.68...v0.1.0
 [v0.0.68]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.67...v0.0.68
 [v0.0.67]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.66...v0.0.67
