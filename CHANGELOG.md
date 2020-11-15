@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.1.2"></a>
+## [v0.1.2] - 2020-11-15
+
+- BBL-440 | improving Makefile init-makefiles w/ latest fixed version
+
+
 <a name="v0.1.1"></a>
 ## [v0.1.1] - 2020-11-13
 
@@ -485,7 +491,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.2...HEAD
+[v0.1.2]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.1...v0.1.2
 [v0.1.1]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.0...v0.1.1
 [v0.1.0]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.68...v0.1.0
 [v0.0.68]: https://github.com/binbashar/le-dev-makefiles/compare/v0.0.67...v0.0.68
