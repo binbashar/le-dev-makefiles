@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.1.4"></a>
+## [v0.1.4] - 2020-11-15
+
+- BBL-440 | fixing make help parsing
+
+
 <a name="v0.1.3"></a>
 ## [v0.1.3] - 2020-11-15
 
@@ -497,7 +503,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.3...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.4...HEAD
+[v0.1.4]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.3...v0.1.4
 [v0.1.3]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.2...v0.1.3
 [v0.1.2]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.1...v0.1.2
 [v0.1.1]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.0...v0.1.1
