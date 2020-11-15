@@ -4,7 +4,7 @@ LOCAL_OS_USER_ID       := $(shell id -u)
 LOCAL_OS_GROUP_ID      := $(shell id -g)
 
 HELM_PWD_DIR           := $(shell pwd)
-HELM_VER               := v2.17.0
+HELM_VER               := v2.16.11
 HELM_PWD_CONT_DIR      := "/root/.helm/repository/local"
 HELM_DOCKER_IMAGE      := lachlanevenson/k8s-helm
 
