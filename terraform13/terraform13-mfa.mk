@@ -122,11 +122,7 @@ format: ## The terraform fmt is used to rewrite tf conf files to a canonical for
 	${TF_CMD_MFA_PREFIX} fmt -recursive
 
 format-check: ## The terraform fmt is used to rewrite tf conf files to a canonical format and style.
-	${TF_CMD_MFA_PREFIX} fmt -check
-    # Consider adding -recursive after everything has been migrated to tf-0.12
-	# (should exclude dev/8_k8s_kops/2-kops folder since it's not possible to migrate to
-	# tf-0.12 yet
-	# ${TF_CMD_MFA_PREFIX} fmt -recursive -check ${TF_PWD_CONT_DIR}
+	${TF_CMD_MFA_PREFIX} fmt -recursive -check ${TF_PWD_CONT_DIR}
 
 tflint: ## TFLint is a Terraform linter for detecting errors that can not be detected by terraform plan (tf0.12 > 0.10.x).
 	docker run --security-opt="label:disable" --rm \
@@ -143,7 +139,7 @@ tflint-deep: ## TFLint is a Terraform linter for detecting errors that can not b
 	--aws-creds-file=/root/.aws/credentials \
 	--aws-region=${LOCAL_OS_AWS_REGION}
 
-force-unlock: ## Manually unlock the terraform state, eg: make ARGS="a94b0919-de5b-9b8f-4bdf-f2d7a3d47112" force-unlock
+force-unlock: ## Manually unlock the terraform state, eg make ARGS="a94b0919-de5b-9b8f-4bdf-f2d7a3d47112" force-unlock
 	${TF_CMD_MFA_PREFIX} force-unlock ${ARGS}
 
 decrypt: ## Decrypt secrets.tf via ansible-vault
@@ -156,7 +152,7 @@ encrypt: ## Encrypt secrets.dec.tf via ansible-vault
 validate-tf-layout: ## Validate Terraform layout to make sure it's set up properly
 	../../@bin/scripts/validate-terraform-layout.sh
 
-cost-estimate-plan: ## Terraform plan output compatible with https://terraform-cost-estimation.com/
+cost-estimate-plan: ## Terraform plan output compatible with terraform-cost-estimation.com
 	curl -sLO https://raw.githubusercontent.com/antonbabenko/terraform-cost-estimation/master/terraform.jq
 	${TF_CMD_MFA_PREFIX} plan -out=plan.tfplan \
 	 -var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
@@ -171,7 +167,7 @@ cost-estimate-plan: ## Terraform plan output compatible with https://terraform-c
 	@echo ----------------------------------------------------------------------
 	@rm -rf terraform.jq plan.tfplan plan.json
 
-cost-estimate-state: ## Terraform state output compatible with https://terraform-cost-estimation.com/
+cost-estimate-state: ## Terraform state output compatible with terraform-cost-estimation.com
 	curl -sLO https://raw.githubusercontent.com/antonbabenko/terraform-cost-estimation/master/terraform.jq
 	${TF_CMD_MFA_PREFIX} state pull > state.json
 	@echo ----------------------------------------------------------------------
