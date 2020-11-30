@@ -5,7 +5,7 @@ SHELL                    := /bin/bash
 
 LOCAL_OS_USER_ID         = $(shell id -u)
 LOCAL_OS_GROUP_ID        = $(shell id -g)
-MKDOCS_DOCKER_IMG        := squidfunk/mkdocs-material:6.1.5
+MKDOCS_DOCKER_IMG        := squidfunk/mkdocs-material:6.1.6
 
 help:
 	@echo 'Available Commands:'
