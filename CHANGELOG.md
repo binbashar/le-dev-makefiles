@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.1.8"></a>
+## [v0.1.8] - 2020-11-30
+
+- BBL-192 | upgrading material-mkdocs ver
+
+
 <a name="v0.1.7"></a>
 ## [v0.1.7] - 2020-11-19
 
@@ -521,7 +527,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.7...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.8...HEAD
+[v0.1.8]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.7...v0.1.8
 [v0.1.7]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.6...v0.1.7
 [v0.1.6]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.5...v0.1.6
 [v0.1.5]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.4...v0.1.5
