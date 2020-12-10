@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.1.10"></a>
+## [v0.1.10] - 2020-12-10
+
+- BBL-192 | adding validation for ansible vault encrypted secrets
+
+
 <a name="v0.1.9"></a>
 ## [v0.1.9] - 2020-12-02
 
@@ -533,7 +539,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.9...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.10...HEAD
+[v0.1.10]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.9...v0.1.10
 [v0.1.9]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.8...v0.1.9
 [v0.1.8]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.7...v0.1.8
 [v0.1.7]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.6...v0.1.7
