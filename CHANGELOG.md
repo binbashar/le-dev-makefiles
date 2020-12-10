@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.1.11"></a>
+## [v0.1.11] - 2020-12-10
+
+- Update Ansible Makefile to add a target to apply sec-users playbook ([#20](https://github.com/binbashar/le-dev-makefiles/issues/20))
+
+
 <a name="v0.1.10"></a>
 ## [v0.1.10] - 2020-12-10
 
@@ -539,7 +545,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.10...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.11...HEAD
+[v0.1.11]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.10...v0.1.11
 [v0.1.10]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.9...v0.1.10
 [v0.1.9]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.8...v0.1.9
 [v0.1.8]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.7...v0.1.8
