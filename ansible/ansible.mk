@@ -3,18 +3,19 @@
 .PHONY: help
 SHELL := /bin/bash
 
-LOCAL_OS_USER_ID					= $(shell id -u)
-LOCAL_OS_GROUP_ID					= $(shell id -g)
-LOCAL_OS_SSH_DIR					:= ~/.ssh/${PROJECT_SHORT}
-LOCAL_OS_GIT_CONF_DIR     := ~/.gitconfig
+LOCAL_OS_USER_ID				= $(shell id -u)
+LOCAL_OS_GROUP_ID				= $(shell id -g)
+LOCAL_OS_SSH_DIR				:= ~/.ssh/${PROJECT_SHORT}
+LOCAL_OS_GIT_CONF_DIR			:= ~/.gitconfig
+LOCAL_CUR_DIR_NAME 				:= $(shell printenv PWD | xargs basename)
 
 ANSIBLE_PWD_ROOT_DIR			= $(shell cd .. && pwd)
-ANSIBLE_PWD_PLAY_DIR      = $(shell pwd | rev | cut -d '/' -f 1 | rev)
-ANSIBLE_DOCKER_ENTRYPOINT :=
+ANSIBLE_PWD_PLAY_DIR			= $(shell pwd | rev | cut -d '/' -f 1 | rev)
+ANSIBLE_DOCKER_ENTRYPOINT		:=
 ANSIBLE_CONT_USER 				:= root
 ANSIBLE_CONT_PWD_DIR			:= /${ANSIBLE_CONT_USER}/ansible
 ANSIBLE_VAULT_FILE				:= ~/.ansible/vault/${PROJECT_SHORT}
-ANSIBLE_VER								:= 2.10.3
+ANSIBLE_VER						:= 2.10.3
 ANSIBLE_DOCKER_IMAGE			:= binbash/ansible
 
 define ANSIBLE_CMD_PREFIX
@@ -24,6 +25,18 @@ docker run --security-opt="label:disable" --rm \
 -v ${LOCAL_OS_GIT_CONF_DIR}:/etc/gitconfig \
 -v ${ANSIBLE_VAULT_FILE}:/${ANSIBLE_CONT_USER}/.ansible/vault/${PROJECT_SHORT} \
 -w ${ANSIBLE_CONT_PWD_DIR}/${ANSIBLE_PWD_PLAY_DIR} \
+-e no_proxy="*" \
+--entrypoint=${ANSIBLE_DOCKER_ENTRYPOINT} \
+-it ${ANSIBLE_DOCKER_IMAGE}:${ANSIBLE_VER}
+endef
+
+define ANSIBLE_SECUSERS_CMD_PREFIX
+docker run --security-opt="label:disable" --rm \
+-v ${ANSIBLE_PWD_ROOT_DIR}:${ANSIBLE_CONT_PWD_DIR}:rw \
+-v ${LOCAL_OS_SSH_DIR}:/${ANSIBLE_CONT_USER}/.ssh/${PROJECT_SHORT} \
+-v ${LOCAL_OS_GIT_CONF_DIR}:/etc/gitconfig \
+-v ${ANSIBLE_VAULT_FILE}:/${ANSIBLE_CONT_USER}/.ansible/vault/${PROJECT_SHORT} \
+-w ${ANSIBLE_CONT_PWD_DIR}/sec-users \
 -e no_proxy="*" \
 --entrypoint=${ANSIBLE_DOCKER_ENTRYPOINT} \
 -it ${ANSIBLE_DOCKER_IMAGE}:${ANSIBLE_VER}
@@ -84,3 +97,8 @@ encrypt: encrypt-cmd pwd-dir-chown ## Encrypt secrets.dec.tf via ansible-vault
 encrypt-cmd:
 	${ANSIBLE_CMD_PREFIX} ansible-vault encrypt --output ./group_vars/secrets.enc.yml ./group_vars/secrets.dec.yml \
 	&& rm -rf ./group_vars/secrets.dec.yml
+
+apply-sec-users: ## Run sec-users playbook limited to current host
+	# NOTE: keep in mind that the current host is determine the current directory name
+	#  so in order for this to work, the .hosts file in sec-users must include that
+	${ANSIBLE_SECUSERS_CMD_PREFIX} ansible-playbook setup.yml --limit ${LOCAL_CUR_DIR_NAME}
