@@ -1,4 +1,4 @@
--include ../@bin/config/base.mk
+-include ../../../@bin/config/base.mk
 
 .PHONY: help
 SHELL := /bin/bash
@@ -11,46 +11,54 @@ LOCAL_OS_AWS_CONF_DIR            := ~/.aws/${PROJECT_SHORT}
 
 TF_PWD_DIR                       = $(shell pwd)
 TF_PWD_CONT_DIR                  := "/go/src/project/"
-TF_PWD_CONFIG_DIR                = $(shell cd ../ && cd config && pwd)
-TF_PWD_COMMON_CONFIG_DIR         = $(shell cd .. && cd common-config && pwd)
-TF_PWD_GITHUB_CONFIG_DIR         = $(shell cd .. && cd github-config && pwd)
-TF_VER                           := 0.13.2
+TF_PWD_CONFIG_DIR                = $(shell cd ../../ && cd config && pwd)
+TF_PWD_COMMON_CONFIG_DIR         = $(shell cd ../../../ && cd config && pwd)
+TF_VER                           := 0.14.2
 TF_DOCKER_BACKEND_CONF_VARS_FILE := /config/backend.config
+TF_DOCKER_ACCOUNT_CONF_VARS_FILE := /config/account.config
 TF_DOCKER_COMMON_CONF_VARS_FILE  := /common-config/common.config
-TF_DOCKER_GITHUB_CONF_VARS_FILE  := /github-config/github.config
-TF_DOCKER_ENTRYPOINT             := /bin/terraform
+TF_DOCKER_ENTRYPOINT             := /root/scripts/aws-mfa/aws-mfa-entrypoint.sh
 TF_DOCKER_IMAGE                  := binbash/terraform-awscli-slim
 
-define TF_CMD_PREFIX
+define TF_CMD_BASH_PREFIX
 docker run --security-opt="label:disable" --rm \
+-v ${TF_PWD_COMMON_CONFIG_DIR}/../\@bin/scripts:/root/scripts \
 -v ${TF_PWD_DIR}:${TF_PWD_CONT_DIR}:rw \
 -v ${TF_PWD_CONFIG_DIR}:/config \
 -v ${TF_PWD_COMMON_CONFIG_DIR}/common.config:${TF_DOCKER_COMMON_CONF_VARS_FILE} \
--v ${TF_PWD_GITHUB_CONFIG_DIR}/github.config:${TF_DOCKER_GITHUB_CONF_VARS_FILE} \
 -v ${LOCAL_OS_SSH_DIR}:/root/.ssh \
 -v ${LOCAL_OS_GIT_CONF_DIR}:/etc/gitconfig \
--v ${LOCAL_OS_AWS_CONF_DIR}:/root/.aws/${PROJECT_SHORT} \
--e AWS_SHARED_CREDENTIALS_FILE=/root/.aws/${PROJECT_SHORT}/credentials \
+-v ${LOCAL_OS_AWS_CONF_DIR}:/root/tmp/${PROJECT_SHORT} \
+-e BACKEND_CONFIG_FILE=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
+-e COMMON_CONFIG_FILE=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
+-e SRC_AWS_CONFIG_FILE=/root/tmp/${PROJECT_SHORT}/config \
+-e SRC_AWS_SHARED_CREDENTIALS_FILE=/root/tmp/${PROJECT_SHORT}/credentials \
 -e AWS_CONFIG_FILE=/root/.aws/${PROJECT_SHORT}/config \
---entrypoint=${TF_DOCKER_ENTRYPOINT} \
+-e AWS_SHARED_CREDENTIALS_FILE=/root/.aws/${PROJECT_SHORT}/credentials \
+--entrypoint=bash \
 -w ${TF_PWD_CONT_DIR} \
 -it ${TF_DOCKER_IMAGE}:${TF_VER}
 endef
 
-define TF_CMD_BASH_PREFIX
+define TF_CMD_MFA_PREFIX
 docker run --security-opt="label:disable" --rm \
+-v ${TF_PWD_COMMON_CONFIG_DIR}/../\@bin/scripts:/root/scripts \
 -v ${TF_PWD_DIR}:${TF_PWD_CONT_DIR}:rw \
 -v ${TF_PWD_CONFIG_DIR}:/config \
 -v ${TF_PWD_COMMON_CONFIG_DIR}/common.config:${TF_DOCKER_COMMON_CONF_VARS_FILE} \
--v ${TF_PWD_GITHUB_CONFIG_DIR}/github.config:${TF_DOCKER_GITHUB_CONF_VARS_FILE} \
 -v ${LOCAL_OS_SSH_DIR}:/root/.ssh \
 -v ${LOCAL_OS_GIT_CONF_DIR}:/etc/gitconfig \
--v ${LOCAL_OS_AWS_CONF_DIR}:/root/.aws/${PROJECT_SHORT} \
--e AWS_SHARED_CREDENTIALS_FILE=/root/.aws/${PROJECT_SHORT}/credentials \
+-v ${LOCAL_OS_AWS_CONF_DIR}:/root/tmp/${PROJECT_SHORT} \
+-e BACKEND_CONFIG_FILE=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
+-e COMMON_CONFIG_FILE=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
+-e SRC_AWS_CONFIG_FILE=/root/tmp/${PROJECT_SHORT}/config \
+-e SRC_AWS_SHARED_CREDENTIALS_FILE=/root/tmp/${PROJECT_SHORT}/credentials \
 -e AWS_CONFIG_FILE=/root/.aws/${PROJECT_SHORT}/config \
---entrypoint=bash \
+-e AWS_SHARED_CREDENTIALS_FILE=/root/.aws/${PROJECT_SHORT}/credentials \
+--entrypoint=${TF_DOCKER_ENTRYPOINT} \
 -w ${TF_PWD_CONT_DIR} \
--it ${TF_DOCKER_IMAGE}:${TF_VER}
+-it ${TF_DOCKER_IMAGE}:${TF_VER} \
+terraform
 endef
 
 help:
@@ -69,18 +77,16 @@ shell: ## Initialize terraform backend, plugins, and modules
 	${TF_CMD_BASH_PREFIX}
 
 version: ## Show terraform version
-	docker run --security-opt="label:disable" --rm \
-	--entrypoint=${TF_DOCKER_ENTRYPOINT} \
-	-t ${TF_DOCKER_IMAGE}:${TF_VER} version
+	${TF_CMD_MFA_PREFIX} version
 
 init: init-cmd tf-dir-chown ## Initialize terraform backend, plugins, and modules
 init-cmd:
-	${TF_CMD_PREFIX} init \
-	-backend-config=${TF_DOCKER_BACKEND_CONF_VARS_FILE}
+	${TF_CMD_MFA_PREFIX} init \
+		-backend-config=${TF_DOCKER_BACKEND_CONF_VARS_FILE}
 
 init-reconfigure: init-reconfigure-cmd tf-dir-chown ## Initialize and reconfigure terraform backend, plugins, and modules
 init-reconfigure-cmd:
-	${TF_CMD_PREFIX} init \
+	${TF_CMD_MFA_PREFIX} init \
 	-reconfigure \
 	-backend-config=${TF_DOCKER_BACKEND_CONF_VARS_FILE}
 
@@ -93,10 +99,10 @@ plan: ## Preview terraform changes
 		make decrypt;\
 	fi
 
-	${TF_CMD_PREFIX} plan \
-	-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
-	-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
-	-var-file=${TF_DOCKER_GITHUB_CONF_VARS_FILE}
+	${TF_CMD_MFA_PREFIX} plan \
+		-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
+		-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
+		-var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
 
 plan-detailed: ## Preview terraform changes with a more detailed output
 	@if [ -f ./*.enc ] && [ ! -f ./*.dec.tf ]; then\
@@ -107,10 +113,10 @@ plan-detailed: ## Preview terraform changes with a more detailed output
 		make decrypt;\
 	fi
 
-	${TF_CMD_PREFIX} plan -detailed-exitcode \
-	-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
-	-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
-	-var-file=${TF_DOCKER_GITHUB_CONF_VARS_FILE}
+	${TF_CMD_MFA_PREFIX} plan -detailed-exitcode \
+		-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
+		-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
+		-var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
 
 apply: apply-cmd tf-dir-chown ## Make terraform apply any changes with dockerized binary
 apply-cmd:
@@ -122,13 +128,13 @@ apply-cmd:
 		make decrypt;\
 	fi
 
-	${TF_CMD_PREFIX} apply \
-	-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
-	-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
-	-var-file=${TF_DOCKER_GITHUB_CONF_VARS_FILE}
+	${TF_CMD_MFA_PREFIX} apply \
+		-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
+		-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
+		-var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
 
 output: ## Terraform output command is used to extract the value of an output variable from the state file.
-	${TF_CMD_PREFIX} output
+	${TF_CMD_MFA_PREFIX} output
 
 destroy: ## Destroy all resources managed by terraform
 	@if [ -f ./*.enc ] && [ ! -f ./*.dec.tf ]; then\
@@ -139,16 +145,16 @@ destroy: ## Destroy all resources managed by terraform
 		make decrypt;\
 	fi
 
-	${TF_CMD_PREFIX} destroy \
-	-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
-	-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
-	-var-file=${TF_DOCKER_GITHUB_CONF_VARS_FILE}
+	${TF_CMD_MFA_PREFIX} destroy \
+		-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
+		-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
+		-var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
 
 format: ## The terraform fmt is used to rewrite tf conf files to a canonical format and style.
-	${TF_CMD_PREFIX} fmt -recursive
+	${TF_CMD_MFA_PREFIX} fmt -recursive
 
 format-check: ## The terraform fmt is used to rewrite tf conf files to a canonical format and style.
-	${TF_CMD_PREFIX} fmt -recursive -check ${TF_PWD_CONT_DIR}
+	${TF_CMD_MFA_PREFIX} fmt -recursive -check ${TF_PWD_CONT_DIR}
 
 tflint: ## TFLint is a Terraform linter for detecting errors that can not be detected by terraform plan (tf0.12 > 0.10.x).
 	docker run --security-opt="label:disable" --rm \
@@ -165,8 +171,8 @@ tflint-deep: ## TFLint is a Terraform linter for detecting errors that can not b
 	--aws-creds-file=/root/.aws/credentials \
 	--aws-region=${LOCAL_OS_AWS_REGION}
 
-force-unlock: ## Manually unlock the terraform state, eg: make ARGS="a94b0919-de5b-9b8f-4bdf-f2d7a3d47112" force-unlock
-	${TF_CMD_PREFIX} force-unlock ${ARGS}
+force-unlock: ## Manually unlock the terraform state, eg make ARGS="a94b0919-de5b-9b8f-4bdf-f2d7a3d47112" force-unlock
+	${TF_CMD_MFA_PREFIX} force-unlock ${ARGS}
 
 decrypt: ## Decrypt secrets.tf via ansible-vault
 	ansible-vault decrypt --output secrets.dec.tf secrets.enc
@@ -177,3 +183,29 @@ encrypt: ## Encrypt secrets.dec.tf via ansible-vault
 
 validate-tf-layout: ## Validate Terraform layout to make sure it's set up properly
 	../../@bin/scripts/validate-terraform-layout.sh
+
+cost-estimate-plan: ## Terraform plan output compatible with terraform-cost-estimation.com
+	curl -sLO https://raw.githubusercontent.com/antonbabenko/terraform-cost-estimation/master/terraform.jq
+	${TF_CMD_MFA_PREFIX} plan -out=plan.tfplan \
+	 -var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
+	 -var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
+	 -var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
+	${TF_CMD_MFA_PREFIX} show -json plan.tfplan > plan.json
+	@echo ----------------------------------------------------------------------
+	cat plan.json \
+	| curl -s -X POST -H "Content-Type: application/json" -d @- https://cost.modules.tf/
+	@ #| jq -cf terraform.jq | curl -s -X POST -H "Content-Type: application/json" -d @- https://cost.modules.tf/ # TODO: Fix jq errorrs
+	@echo ''
+	@echo ----------------------------------------------------------------------
+	@rm -rf terraform.jq plan.tfplan plan.json
+
+cost-estimate-state: ## Terraform state output compatible with terraform-cost-estimation.com
+	curl -sLO https://raw.githubusercontent.com/antonbabenko/terraform-cost-estimation/master/terraform.jq
+	${TF_CMD_MFA_PREFIX} state pull > state.json
+	@echo ----------------------------------------------------------------------
+	cat state.json \
+	| curl -s -X POST -H "Content-Type: application/json" -d @- https://cost.modules.tf/
+	@ #| jq -cf terraform.jq | curl -s -X POST -H "Content-Type: application/json" -d @- https://cost.modules.tf/ # TODO: Fix jq errorrs
+	@echo ''
+	@echo ----------------------------------------------------------------------
+	@rm -rf terraform.jq state.json
