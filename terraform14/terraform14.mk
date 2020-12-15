@@ -1,4 +1,4 @@
--include ../@bin/config/base.mk
+-include ../../@bin/config/base.mk
 
 .PHONY: help
 SHELL := /bin/bash
@@ -11,13 +11,12 @@ LOCAL_OS_AWS_CONF_DIR            := ~/.aws/${PROJECT_SHORT}
 
 TF_PWD_DIR                       = $(shell pwd)
 TF_PWD_CONT_DIR                  := "/go/src/project/"
-TF_PWD_CONFIG_DIR                = $(shell cd ../ && cd config && pwd)
-TF_PWD_COMMON_CONFIG_DIR         = $(shell cd .. && cd common-config && pwd)
-TF_PWD_GITHUB_CONFIG_DIR         = $(shell cd .. && cd github-config && pwd)
-TF_VER                           := 0.13.2
+TF_PWD_CONFIG_DIR                = $(shell cd .. && cd config && pwd)
+TF_PWD_COMMON_CONFIG_DIR         = $(shell cd ../.. && cd config && pwd)
+TF_VER                           := 0.14.2
 TF_DOCKER_BACKEND_CONF_VARS_FILE := /config/backend.config
+TF_DOCKER_ACCOUNT_CONF_VARS_FILE := /config/account.config
 TF_DOCKER_COMMON_CONF_VARS_FILE  := /common-config/common.config
-TF_DOCKER_GITHUB_CONF_VARS_FILE  := /github-config/github.config
 TF_DOCKER_ENTRYPOINT             := /bin/terraform
 TF_DOCKER_IMAGE                  := binbash/terraform-awscli-slim
 
@@ -26,7 +25,6 @@ docker run --security-opt="label:disable" --rm \
 -v ${TF_PWD_DIR}:${TF_PWD_CONT_DIR}:rw \
 -v ${TF_PWD_CONFIG_DIR}:/config \
 -v ${TF_PWD_COMMON_CONFIG_DIR}/common.config:${TF_DOCKER_COMMON_CONF_VARS_FILE} \
--v ${TF_PWD_GITHUB_CONFIG_DIR}/github.config:${TF_DOCKER_GITHUB_CONF_VARS_FILE} \
 -v ${LOCAL_OS_SSH_DIR}:/root/.ssh \
 -v ${LOCAL_OS_GIT_CONF_DIR}:/etc/gitconfig \
 -v ${LOCAL_OS_AWS_CONF_DIR}:/root/.aws/${PROJECT_SHORT} \
@@ -42,7 +40,6 @@ docker run --security-opt="label:disable" --rm \
 -v ${TF_PWD_DIR}:${TF_PWD_CONT_DIR}:rw \
 -v ${TF_PWD_CONFIG_DIR}:/config \
 -v ${TF_PWD_COMMON_CONFIG_DIR}/common.config:${TF_DOCKER_COMMON_CONF_VARS_FILE} \
--v ${TF_PWD_GITHUB_CONFIG_DIR}/github.config:${TF_DOCKER_GITHUB_CONF_VARS_FILE} \
 -v ${LOCAL_OS_SSH_DIR}:/root/.ssh \
 -v ${LOCAL_OS_GIT_CONF_DIR}:/etc/gitconfig \
 -v ${LOCAL_OS_AWS_CONF_DIR}:/root/.aws/${PROJECT_SHORT} \
@@ -96,7 +93,7 @@ plan: ## Preview terraform changes
 	${TF_CMD_PREFIX} plan \
 	-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
 	-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
-	-var-file=${TF_DOCKER_GITHUB_CONF_VARS_FILE}
+	-var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
 
 plan-detailed: ## Preview terraform changes with a more detailed output
 	@if [ -f ./*.enc ] && [ ! -f ./*.dec.tf ]; then\
@@ -110,7 +107,7 @@ plan-detailed: ## Preview terraform changes with a more detailed output
 	${TF_CMD_PREFIX} plan -detailed-exitcode \
 	-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
 	-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
-	-var-file=${TF_DOCKER_GITHUB_CONF_VARS_FILE}
+	-var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
 
 apply: apply-cmd tf-dir-chown ## Make terraform apply any changes with dockerized binary
 apply-cmd:
@@ -125,10 +122,13 @@ apply-cmd:
 	${TF_CMD_PREFIX} apply \
 	-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
 	-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
-	-var-file=${TF_DOCKER_GITHUB_CONF_VARS_FILE}
+	-var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
 
 output: ## Terraform output command is used to extract the value of an output variable from the state file.
 	${TF_CMD_PREFIX} output
+
+output-json: ## Terraform output json fmt command is used to extract the value of an output variable from the state file.
+	${TF_CMD_PREFIX} output -json
 
 destroy: ## Destroy all resources managed by terraform
 	@if [ -f ./*.enc ] && [ ! -f ./*.dec.tf ]; then\
@@ -142,7 +142,7 @@ destroy: ## Destroy all resources managed by terraform
 	${TF_CMD_PREFIX} destroy \
 	-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
 	-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
-	-var-file=${TF_DOCKER_GITHUB_CONF_VARS_FILE}
+	-var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
 
 format: ## The terraform fmt is used to rewrite tf conf files to a canonical format and style.
 	${TF_CMD_PREFIX} fmt -recursive
@@ -165,7 +165,7 @@ tflint-deep: ## TFLint is a Terraform linter for detecting errors that can not b
 	--aws-creds-file=/root/.aws/credentials \
 	--aws-region=${LOCAL_OS_AWS_REGION}
 
-force-unlock: ## Manually unlock the terraform state, eg: make ARGS="a94b0919-de5b-9b8f-4bdf-f2d7a3d47112" force-unlock
+force-unlock: ## Manually unlock the terraform state, eg make ARGS="a94b0919-de5b-9b8f-4bdf-f2d7a3d47112" force-unlock
 	${TF_CMD_PREFIX} force-unlock ${ARGS}
 
 decrypt: ## Decrypt secrets.tf via ansible-vault
@@ -177,3 +177,29 @@ encrypt: ## Encrypt secrets.dec.tf via ansible-vault
 
 validate-tf-layout: ## Validate Terraform layout to make sure it's set up properly
 	../../@bin/scripts/validate-terraform-layout.sh
+
+cost-estimate-plan: ## Terraform plan output compatible with terraform-cost-estimation.com
+	curl -sLO https://raw.githubusercontent.com/antonbabenko/terraform-cost-estimation/master/terraform.jq
+	${TF_CMD_PREFIX} plan -out=plan.tfplan \
+	 -var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
+	 -var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
+	 -var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
+	${TF_CMD_PREFIX} show -json plan.tfplan > plan.json
+	@echo ----------------------------------------------------------------------
+	cat plan.json \
+	| curl -s -X POST -H "Content-Type: application/json" -d @- https://cost.modules.tf/
+	@ #| jq -cf terraform.jq | curl -s -X POST -H "Content-Type: application/json" -d @- https://cost.modules.tf/ # TODO: Fix jq errorrs
+	@echo ''
+	@echo ----------------------------------------------------------------------
+	@rm -rf terraform.jq plan.tfplan plan.json
+
+cost-estimate-state: ## Terraform state output compatible with terraform-cost-estimation.com
+	curl -sLO https://raw.githubusercontent.com/antonbabenko/terraform-cost-estimation/master/terraform.jq
+	${TF_CMD_PREFIX} state pull > state.json
+	@echo ----------------------------------------------------------------------
+	cat state.json \
+	| curl -s -X POST -H "Content-Type: application/json" -d @- https://cost.modules.tf/
+	@ #| jq -cf terraform.jq | curl -s -X POST -H "Content-Type: application/json" -d @- https://cost.modules.tf/ # TODO: Fix jq errorrs
+	@echo ''
+	@echo ----------------------------------------------------------------------
+	@rm -rf terraform.jq state.json
