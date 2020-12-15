@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.1.12"></a>
+## [v0.1.12] - 2020-12-15
+
+- BBL-263 | adding terraform 14 makefiles + minor terraform13 github makefile fix
+
+
 <a name="v0.1.11"></a>
 ## [v0.1.11] - 2020-12-10
 
@@ -545,7 +551,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.11...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.12...HEAD
+[v0.1.12]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.11...v0.1.12
 [v0.1.11]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.10...v0.1.11
 [v0.1.10]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.9...v0.1.10
 [v0.1.9]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.8...v0.1.9
