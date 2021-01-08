@@ -100,6 +100,7 @@ decrypt-non-interactive-conf: ## Decrypt secrets.enc current context file via an
 	${ANSIBLE_CMD_PREFIX} ansible-vault decrypt \
 	--vault-password-file ./.vault_pass \
 	--output ./secrets.dec ./secrets.enc
+	sudo chown -R ${LOCAL_OS_USER_ID}:${LOCAL_OS_GROUP_ID} ./secrets.dec
 
 decrypt-string: ## Decrypt encrypted string via ansible-vault - e.g. make ARG="your_encrypted_srting" decrypt-string
 	${ANSIBLE_CMD_PREFIX} bash ../@bin/scripts/ansible-vault-decrypt-str.sh ${ARG}
