@@ -86,9 +86,21 @@ apply-%: ## Provision only the given tags (e.g. make apply-security-users or mak
 check: ## run ansible-playbook in Check Mode (“Dry Run”)
 	${ANSIBLE_CMD_PREFIX} ansible-playbook setup.yml --check
 
-decrypt: decrypt-cmd pwd-dir-chown ## Decrypt secrets.tf via ansible-vault
+decrypt: decrypt-cmd pwd-dir-chown ## Decrypt secrets.enc.yml via ansible-vault
 decrypt-cmd:
 	${ANSIBLE_CMD_PREFIX} ansible-vault decrypt --output ./group_vars/secrets.dec.yml ./group_vars/secrets.enc.yml
+
+decrypt-non-interactive: decrypt-cmd-non-interactive pwd-dir-chown ## Decrypt secrets.enc.yml via ansible-vault with vault pass file (non interactively)
+decrypt-cmd-non-interactive:
+	${ANSIBLE_CMD_PREFIX} ansible-vault decrypt \
+	--vault-password-file ~/.ansible/vault/${PROJECT_SHORT}/.vault_pass \
+	--output ./group_vars/secrets.dec.yml ./group_vars/secrets.enc.yml
+
+decrypt-non-interactive-conf: decrypt-cmd-non-interactive-conf pwd-dir-chown ## Decrypt secrets.enc current context file via ansible-vault with vault pass file (non interactively)
+decrypt-cmd-non-interactive-conf:
+	${ANSIBLE_CMD_PREFIX} ansible-vault decrypt \
+	--vault-password-file ./.vault_pass \
+	--output ./secrets.dec ./secrets.enc
 
 decrypt-string: ## Decrypt encrypted string via ansible-vault - e.g. make ARG="your_encrypted_srting" decrypt-string
 	${ANSIBLE_CMD_PREFIX} bash ../@bin/scripts/ansible-vault-decrypt-str.sh ${ARG}
