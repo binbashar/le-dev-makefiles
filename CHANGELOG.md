@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.1.15"></a>
+## [v0.1.15] - 2021-01-08
+
+- BBL-456 | fixing ansible.mk -> decrypt-non-interactive-conf task removing post chmod step
+
+
 <a name="v0.1.14"></a>
 ## [v0.1.14] - 2021-01-08
 
@@ -564,7 +570,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.14...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.15...HEAD
+[v0.1.15]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.14...v0.1.15
 [v0.1.14]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.13...v0.1.14
 [v0.1.13]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.12...v0.1.13
 [v0.1.12]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.11...v0.1.12
