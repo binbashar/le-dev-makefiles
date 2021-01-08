@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.1.14"></a>
+## [v0.1.14] - 2021-01-08
+
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- BBL-456 | adding ansible vault decrypt non-interactive cmds
+
+
 <a name="v0.1.13"></a>
 ## [v0.1.13] - 2021-01-05
 
@@ -557,7 +564,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.13...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.14...HEAD
+[v0.1.14]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.13...v0.1.14
 [v0.1.13]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.12...v0.1.13
 [v0.1.12]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.11...v0.1.12
 [v0.1.11]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.10...v0.1.11
