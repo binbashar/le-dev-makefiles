@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.1.16"></a>
+## [v0.1.16] - 2021-01-08
+
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- BBL-456 | fixing resulting secrets.dec ansible permissions
+
+
 <a name="v0.1.15"></a>
 ## [v0.1.15] - 2021-01-08
 
@@ -570,7 +577,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.15...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.16...HEAD
+[v0.1.16]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.15...v0.1.16
 [v0.1.15]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.14...v0.1.15
 [v0.1.14]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.13...v0.1.14
 [v0.1.13]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.12...v0.1.13
