@@ -96,8 +96,7 @@ decrypt-cmd-non-interactive:
 	--vault-password-file ~/.ansible/vault/${PROJECT_SHORT}/.vault_pass \
 	--output ./group_vars/secrets.dec.yml ./group_vars/secrets.enc.yml
 
-decrypt-non-interactive-conf: decrypt-cmd-non-interactive-conf pwd-dir-chown ## Decrypt secrets.enc current context file via ansible-vault with vault pass file (non interactively)
-decrypt-cmd-non-interactive-conf:
+decrypt-non-interactive-conf: ## Decrypt secrets.enc current context file via ansible-vault with vault pass file (non interactively)
 	${ANSIBLE_CMD_PREFIX} ansible-vault decrypt \
 	--vault-password-file ./.vault_pass \
 	--output ./secrets.dec ./secrets.enc
