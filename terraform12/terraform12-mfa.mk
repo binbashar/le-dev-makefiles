@@ -30,10 +30,12 @@ docker run --security-opt="label:disable" --rm \
 -v ${LOCAL_OS_GIT_CONF_DIR}:/etc/gitconfig \
 -v ${LOCAL_OS_AWS_CONF_DIR}:/root/tmp/${PROJECT_SHORT} \
 -e BACKEND_CONFIG_FILE=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
+-e COMMON_CONFIG_FILE=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
 -e SRC_AWS_CONFIG_FILE=/root/tmp/${PROJECT_SHORT}/config \
 -e SRC_AWS_SHARED_CREDENTIALS_FILE=/root/tmp/${PROJECT_SHORT}/credentials \
 -e AWS_CONFIG_FILE=/root/.aws/${PROJECT_SHORT}/config \
 -e AWS_SHARED_CREDENTIALS_FILE=/root/.aws/${PROJECT_SHORT}/credentials \
+-e AWS_CACHE_DIR=/root/tmp/${PROJECT_SHORT}/cache \
 --entrypoint=bash \
 -w ${TF_PWD_CONT_DIR} \
 -it ${TF_DOCKER_IMAGE}:${TF_VER}
@@ -49,10 +51,12 @@ docker run --security-opt="label:disable" --rm \
 -v ${LOCAL_OS_GIT_CONF_DIR}:/etc/gitconfig \
 -v ${LOCAL_OS_AWS_CONF_DIR}:/root/tmp/${PROJECT_SHORT} \
 -e BACKEND_CONFIG_FILE=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
+-e COMMON_CONFIG_FILE=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
 -e SRC_AWS_CONFIG_FILE=/root/tmp/${PROJECT_SHORT}/config \
 -e SRC_AWS_SHARED_CREDENTIALS_FILE=/root/tmp/${PROJECT_SHORT}/credentials \
 -e AWS_CONFIG_FILE=/root/.aws/${PROJECT_SHORT}/config \
 -e AWS_SHARED_CREDENTIALS_FILE=/root/.aws/${PROJECT_SHORT}/credentials \
+-e AWS_CACHE_DIR=/root/tmp/${PROJECT_SHORT}/cache \
 --entrypoint=${TF_DOCKER_ENTRYPOINT} \
 -w ${TF_PWD_CONT_DIR} \
 -it ${TF_DOCKER_IMAGE}:${TF_VER} \
@@ -82,13 +86,35 @@ init-cmd:
 	${TF_CMD_MFA_PREFIX} init \
 		-backend-config=${TF_DOCKER_BACKEND_CONF_VARS_FILE}
 
+init-reconfigure: init-reconfigure-cmd tf-dir-chown ## Initialize and reconfigure terraform backend, plugins, and modules
+init-reconfigure-cmd:
+	${TF_CMD_MFA_PREFIX} init \
+	-reconfigure \
+	-backend-config=${TF_DOCKER_BACKEND_CONF_VARS_FILE}
+
 plan: ## Preview terraform changes
+	@if [ -f ./*.enc ] && [ ! -f ./*.dec.tf ]; then\
+		echo "===============================================";\
+		echo "Decrypting secrets before running 'make apply',";\
+		echo "please enter your ansible-vault encryption key ";\
+		echo "===============================================";\
+		make decrypt;\
+	fi
+
 	${TF_CMD_MFA_PREFIX} plan \
 		-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
 		-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
 		-var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
 
 plan-detailed: ## Preview terraform changes with a more detailed output
+	@if [ -f ./*.enc ] && [ ! -f ./*.dec.tf ]; then\
+		echo "===============================================";\
+		echo "Decrypting secrets before running 'make apply',";\
+		echo "please enter your ansible-vault encryption key ";\
+		echo "===============================================";\
+		make decrypt;\
+	fi
+
 	${TF_CMD_MFA_PREFIX} plan -detailed-exitcode \
 		-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
 		-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
@@ -96,6 +122,14 @@ plan-detailed: ## Preview terraform changes with a more detailed output
 
 apply: apply-cmd tf-dir-chown ## Make terraform apply any changes with dockerized binary
 apply-cmd:
+	@if [ -f ./*.enc ] && [ ! -f ./*.dec.tf ]; then\
+		echo "===============================================";\
+		echo "Decrypting secrets before running 'make apply',";\
+		echo "please enter your ansible-vault encryption key ";\
+		echo "===============================================";\
+		make decrypt;\
+	fi
+
 	${TF_CMD_MFA_PREFIX} apply \
 		-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
 		-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
@@ -105,6 +139,14 @@ output: ## Terraform output command is used to extract the value of an output va
 	${TF_CMD_MFA_PREFIX} output
 
 destroy: ## Destroy all resources managed by terraform
+	@if [ -f ./*.enc ] && [ ! -f ./*.dec.tf ]; then\
+		echo "===============================================";\
+		echo "Decrypting secrets before running 'make apply',";\
+		echo "please enter your ansible-vault encryption key ";\
+		echo "===============================================";\
+		make decrypt;\
+	fi
+
 	${TF_CMD_MFA_PREFIX} destroy \
 		-var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
 		-var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
