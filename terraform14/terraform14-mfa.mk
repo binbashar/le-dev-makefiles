@@ -35,6 +35,7 @@ docker run --security-opt="label:disable" --rm \
 -e SRC_AWS_SHARED_CREDENTIALS_FILE=/root/tmp/${PROJECT_SHORT}/credentials \
 -e AWS_CONFIG_FILE=/root/.aws/${PROJECT_SHORT}/config \
 -e AWS_SHARED_CREDENTIALS_FILE=/root/.aws/${PROJECT_SHORT}/credentials \
+-e AWS_CACHE_DIR=/root/tmp/${PROJECT_SHORT}/cache \
 --entrypoint=bash \
 -w ${TF_PWD_CONT_DIR} \
 -it ${TF_DOCKER_IMAGE}:${TF_VER}
@@ -55,6 +56,7 @@ docker run --security-opt="label:disable" --rm \
 -e SRC_AWS_SHARED_CREDENTIALS_FILE=/root/tmp/${PROJECT_SHORT}/credentials \
 -e AWS_CONFIG_FILE=/root/.aws/${PROJECT_SHORT}/config \
 -e AWS_SHARED_CREDENTIALS_FILE=/root/.aws/${PROJECT_SHORT}/credentials \
+-e AWS_CACHE_DIR=/root/tmp/${PROJECT_SHORT}/cache \
 --entrypoint=${TF_DOCKER_ENTRYPOINT} \
 -w ${TF_PWD_CONT_DIR} \
 -it ${TF_DOCKER_IMAGE}:${TF_VER} \
