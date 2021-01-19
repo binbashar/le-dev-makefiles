@@ -11,7 +11,7 @@ LOCAL_OS_AWS_CONF_DIR            := ~/.aws/${PROJECT_SHORT}
 
 TF_PWD_DIR                       = $(shell pwd)
 TF_PWD_CONT_DIR                  := "/go/src/project/"
-TF_VER                           := 0.13.2
+TF_VER                           := 0.13.6
 TF_DOCKER_ENTRYPOINT             := /bin/terraform
 TF_DOCKER_IMAGE                  := binbash/terraform-awscli-slim
 
