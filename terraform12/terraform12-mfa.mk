@@ -186,28 +186,16 @@ encrypt: ## Encrypt secrets.dec.tf via ansible-vault
 validate-tf-layout: ## Validate Terraform layout to make sure it's set up properly
 	../../@bin/scripts/validate-terraform-layout.sh
 
-cost-estimate-plan: ## Terraform plan output compatible with terraform-cost-estimation.com
-	curl -sLO https://raw.githubusercontent.com/antonbabenko/terraform-cost-estimation/master/terraform.jq
-	${TF_CMD_MFA_PREFIX} plan -out=plan.tfplan \
+cost-estimate-plan: ## Terraform plan cost estimate (https://www.infracost.io/), eg make INFRACOST_API_KEY="XXXXXXXXXXXX" cost-estimate-plan
+	${TF_CMD_MFA_PREFIX} plan -out=plan.save \
 	 -var-file=${TF_DOCKER_BACKEND_CONF_VARS_FILE} \
 	 -var-file=${TF_DOCKER_COMMON_CONF_VARS_FILE} \
 	 -var-file=${TF_DOCKER_ACCOUNT_CONF_VARS_FILE}
-	${TF_CMD_MFA_PREFIX} show -json plan.tfplan > plan.json
+	${TF_CMD_MFA_PREFIX} show -json plan.save > plan.json
+	sed -i '/^\[/d' plan.json
 	@echo ----------------------------------------------------------------------
-	cat plan.json \
-	| curl -s -X POST -H "Content-Type: application/json" -d @- https://cost.modules.tf/
-	@ #| jq -cf terraform.jq | curl -s -X POST -H "Content-Type: application/json" -d @- https://cost.modules.tf/ # TODO: Fix jq errorrs
-	@echo ''
-	@echo ----------------------------------------------------------------------
-	@rm -rf terraform.jq plan.tfplan plan.json
-
-cost-estimate-state: ## Terraform state output compatible with terraform-cost-estimation.com
-	curl -sLO https://raw.githubusercontent.com/antonbabenko/terraform-cost-estimation/master/terraform.jq
-	${TF_CMD_MFA_PREFIX} state pull > state.json
-	@echo ----------------------------------------------------------------------
-	cat state.json \
-	| curl -s -X POST -H "Content-Type: application/json" -d @- https://cost.modules.tf/
-	@ #| jq -cf terraform.jq | curl -s -X POST -H "Content-Type: application/json" -d @- https://cost.modules.tf/ # TODO: Fix jq errorrs
-	@echo ''
-	@echo ----------------------------------------------------------------------
-	@rm -rf terraform.jq state.json
+	docker run --rm \
+		-e INFRACOST_API_KEY=${INFRACOST_API_KEY} \
+		-v $$PWD/:/code/ \
+		--entrypoint=/usr/local/bin/infracost \
+		binbash/terraform-infracost-slim:${TF_VER} --tfjson /code/plan.json

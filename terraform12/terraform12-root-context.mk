@@ -66,5 +66,3 @@ tflint-deep: ## TFLint is a Terraform linter for detecting errors that can not b
 	--aws-profile=${LOCAL_OS_AWS_PROFILE} \
 	--aws-creds-file=/root/.aws/credentials \
 	--aws-region=${LOCAL_OS_AWS_REGION}
-
-
