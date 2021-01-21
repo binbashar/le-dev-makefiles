@@ -6,7 +6,7 @@ SHELL                := /bin/bash
 LOCAL_PWD            = $(shell pwd)
 LOCAL_PARENT_DIR     = $(shell basename "$$PWD")
 LOCAL_KUBE_CONFIG    := ~/.kube/bb/${LOCAL_PARENT_DIR}
-DOCKER_IMG_NAME      := praqma/helmsman:v3.4.3-helm-v3.2.1
+DOCKER_IMG_NAME      := binbash/helmsman:v3.4.3-helm-v3.2.1
 
 # Helm VARs
 #
@@ -28,22 +28,22 @@ help:
 # K8s HELMSMAN                                                 #
 #==============================================================#
 plan: ## Run helmsman in plan mode to preview any changes
-	${HELMSMAN} helmsman -f helmsman.yaml
+	${HELMSMAN} -f helmsman.yaml
 
 debug: ## Run helmsman in plan mode showing additional execution logs
-	${HELMSMAN} helmsman -f helmsman.yaml --debug
+	${HELMSMAN} -f helmsman.yaml --debug
 
 diff:
-	${HELMSMAN} helmsman -f helmsman.yaml --show-diff
+	${HELMSMAN} -f helmsman.yaml --show-diff
 
 dry-run: ## Run helmsman in dry-run mode to simulate what will be changed without actually applying
-	${HELMSMAN} helmsman -f helmsman.yaml --dry-run
+	${HELMSMAN} -f helmsman.yaml --dry-run
 
 dry-run-debug: ## Run helmsman in dry-run mode showing additional execution logs
-	${HELMSMAN} helmsman -f helmsman.yaml --dry-run --debug
+	${HELMSMAN} -f helmsman.yaml --dry-run --debug
 
 apply: ## Run helmsman in apply mode to perform any required changes
-	${HELMSMAN} helmsman -f helmsman.yaml --apply
+	${HELMSMAN} -f helmsman.yaml --apply
 
 #==============================================================#
 # K8s HELM                                                     #
