@@ -190,4 +190,4 @@ cost-estimate-plan: ## Terraform plan cost estimate (https://www.infracost.io/),
 		-e INFRACOST_API_KEY=${INFRACOST_API_KEY} \
 		-v $$PWD/:/code/ \
 		--entrypoint=/usr/local/bin/infracost \
-		binbash/terraform-infracost-slim:${TF_VER} --tfjson /code/plan.json
+		binbash/terraform-infracost-slim:${TF_VER} --tfjson /code/plan.json --show-skipped
