@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.1.19"></a>
+## [v0.1.19] - 2021-01-21
+
+- BBL-424 | adding --show-skipped flag to understand which objetcs are still not supported by the infracost api in the calculations
+
+
 <a name="v0.1.18"></a>
 ## [v0.1.18] - 2021-01-19
 
@@ -595,7 +601,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.18...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.19...HEAD
+[v0.1.19]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.18...v0.1.19
 [v0.1.18]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.17...v0.1.18
 [v0.1.17]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.16...v0.1.17
 [v0.1.16]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.15...v0.1.16
