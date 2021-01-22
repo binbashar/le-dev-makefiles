@@ -5,6 +5,7 @@ SHELL                := /bin/bash
 
 LOCAL_PWD            	= $(shell pwd)
 LOCAL_PARENT_DIR     	= $(shell basename "$$PWD")
+LOCAL_BASE_DIR 			= $(shell git rev-parse --show-toplevel)
 LOCAL_OS_AWS_CONF_DIR 	:= ~/.aws/${PROJECT_SHORT}
 LOCAL_KUBE_CONFIG    	:= ~/.kube/${PROJECT_SHORT}/${LOCAL_PARENT_DIR}
 LOCAL_HOME_DIR			:= ~
@@ -12,6 +13,7 @@ DOCKER_IMG_NAME      	:= binbash/helmsman:v3.4.3-helm-v3.2.1
 
 define HELMSMAN
 docker run -it --rm \
+-v ${LOCAL_BASE_DIR}/\@bin/scripts:/root/scripts \
 -v ${LOCAL_OS_AWS_CONF_DIR}:/root/.aws/${PROJECT_SHORT} \
 -v ${LOCAL_KUBE_CONFIG}:/root/.kube/orig \
 -v ~/.kube/cache:/root/.kube/cache \
@@ -20,12 +22,13 @@ docker run -it --rm \
 -e SOURCE_KUBECONFIG=/root/.kube/orig \
 -e USER_HOME=${LOCAL_HOME_DIR} \
 -w /app \
---entrypoint ./run-aws-iam-authenticator.sh \
+--entrypoint /root/scripts/run-aws-iam-authenticator.sh \
 ${DOCKER_IMG_NAME}
 endef
 
 define HELMSMAN_SHELL
 docker run -it --rm \
+-v ${LOCAL_BASE_DIR}/\@bin/scripts:/root/scripts \
 -v ${LOCAL_OS_AWS_CONF_DIR}:/root/.aws/${PROJECT_SHORT} \
 -v ${LOCAL_KUBE_CONFIG}:/root/.kube/orig \
 -v ~/.kube/cache:/root/.kube/cache \
