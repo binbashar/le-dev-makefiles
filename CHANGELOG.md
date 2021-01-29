@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.1.20"></a>
+## [v0.1.20] - 2021-01-29
+
+- Helmsman MFA support ([#26](https://github.com/binbashar/le-dev-makefiles/issues/26))
+
+
 <a name="v0.1.19"></a>
 ## [v0.1.19] - 2021-01-21
 
@@ -601,7 +607,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.19...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.20...HEAD
+[v0.1.20]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.19...v0.1.20
 [v0.1.19]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.18...v0.1.19
 [v0.1.18]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.17...v0.1.18
 [v0.1.17]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.16...v0.1.17
