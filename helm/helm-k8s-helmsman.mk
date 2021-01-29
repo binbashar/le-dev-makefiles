@@ -5,18 +5,26 @@ SHELL                := /bin/bash
 
 LOCAL_PWD            = $(shell pwd)
 LOCAL_PARENT_DIR     = $(shell basename "$$PWD")
-LOCAL_KUBE_CONFIG    := ~/.kube/bb/${LOCAL_PARENT_DIR}
+LOCAL_KUBE_CONFIG    := ~/.kube/${PROJECT_SHORT}/${LOCAL_PARENT_DIR}
+LOCAL_SSH_DIR		 := ~/.ssh
 DOCKER_IMG_NAME      := binbash/helmsman:v3.4.3-helm-v3.2.1
-
-# Helm VARs
-#
-HELM_PACKAGE_NAME    := linkerd2
 
 define HELMSMAN
 docker run -it --rm \
 -v ${LOCAL_KUBE_CONFIG}:/root/.kube/config \
+-v ${LOCAL_SSH_DIR}:/root/.ssh \
 -v ${LOCAL_PWD}:/app \
 -w /app \
+${DOCKER_IMG_NAME}
+endef
+
+define HELMSMAN_SHELL
+docker run -it --rm \
+-v ${LOCAL_KUBE_CONFIG}:/root/.kube/config \
+-v ${LOCAL_SSH_DIR}:/root/.ssh \
+-v ${LOCAL_PWD}:/app \
+-w /app \
+--entrypoint sh \
 ${DOCKER_IMG_NAME}
 endef
 
@@ -45,8 +53,5 @@ dry-run-debug: ## Run helmsman in dry-run mode showing additional execution logs
 apply: ## Run helmsman in apply mode to perform any required changes
 	${HELMSMAN} -f helmsman.yaml --apply
 
-#==============================================================#
-# K8s HELM                                                     #
-#==============================================================#
-helm-search-hub: ## Find publicly available helm charts
-	${HELMSMAN} helm search hub ${HELM_PACKAGE_NAME}
+shell: ## Run a shell in the container
+	${HELMSMAN_SHELL}

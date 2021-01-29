@@ -8,6 +8,7 @@ LOCAL_PARENT_DIR     	= $(shell basename "$$PWD")
 LOCAL_BASE_DIR 			= $(shell git rev-parse --show-toplevel)
 LOCAL_OS_AWS_CONF_DIR 	:= ~/.aws/${PROJECT_SHORT}
 LOCAL_KUBE_CONFIG    	:= ~/.kube/${PROJECT_SHORT}/${LOCAL_PARENT_DIR}
+LOCAL_SSH_DIR		 	:= ~/.ssh
 LOCAL_HOME_DIR			:= ~
 DOCKER_IMG_NAME      	:= binbash/helmsman:v3.4.3-helm-v3.2.1
 
@@ -17,6 +18,7 @@ docker run -it --rm \
 -v ${LOCAL_OS_AWS_CONF_DIR}:/root/.aws/${PROJECT_SHORT} \
 -v ${LOCAL_KUBE_CONFIG}:/root/.kube/orig \
 -v ~/.kube/cache:/root/.kube/cache \
+-v ${LOCAL_SSH_DIR}:/root/.ssh \
 -v ${LOCAL_PWD}:/app \
 -e KUBECONFIG=/root/.kube/config \
 -e SOURCE_KUBECONFIG=/root/.kube/orig \
@@ -32,6 +34,7 @@ docker run -it --rm \
 -v ${LOCAL_OS_AWS_CONF_DIR}:/root/.aws/${PROJECT_SHORT} \
 -v ${LOCAL_KUBE_CONFIG}:/root/.kube/orig \
 -v ~/.kube/cache:/root/.kube/cache \
+-v ${LOCAL_SSH_DIR}:/root/.ssh \
 -v ${LOCAL_PWD}:/app \
 -e KUBECONFIG=/root/.kube/config \
 -e SOURCE_KUBECONFIG=/root/.kube/orig \
