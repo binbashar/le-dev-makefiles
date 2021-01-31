@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.1.21"></a>
+## [v0.1.21] - 2021-01-31
+
+- BBL-192 | upgrading material mkdocs docker image version
+
+
 <a name="v0.1.20"></a>
 ## [v0.1.20] - 2021-01-29
 
@@ -607,7 +613,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.20...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.21...HEAD
+[v0.1.21]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.20...v0.1.21
 [v0.1.20]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.19...v0.1.20
 [v0.1.19]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.18...v0.1.19
 [v0.1.18]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.17...v0.1.18
