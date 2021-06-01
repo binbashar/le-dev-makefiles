@@ -6,6 +6,7 @@ SHELL                    := /bin/bash
 LOCAL_OS_USER_ID         = $(shell id -u)
 LOCAL_OS_GROUP_ID        = $(shell id -g)
 MKDOCS_DOCKER_IMG        := squidfunk/mkdocs-material:7.1.6
+# GOOGLE_ANALYTICS_KEY: must be preset as os.ENV var
 
 help:
 	@echo 'Available Commands:'
@@ -18,6 +19,7 @@ docs-deploy-gh: ## deploy to Github pages
 	docker run --rm -it \
 	-v ~/.ssh:/root/.ssh \
 	-v ${PWD}:/docs \
+	-e GOOGLE_ANALYTICS_KEY=${GOOGLE_ANALYTICS_KEY} \
 	${MKDOCS_DOCKER_IMG} gh-deploy --clean \
 	--message "CircleCI deploying to gh-pages [ci skip]" \
 	--remote-branch gh-pages
@@ -28,6 +30,7 @@ docs-live: ## Build and launch a local copy of the documentation website in http
 	@docker run --rm -it \
 		-p 8000:8000 \
 		-v ${PWD}:/docs \
+		-e GOOGLE_ANALYTICS_KEY=UA-17XXXXX42-1 \
 		${MKDOCS_DOCKER_IMG}
 
 docs-check-dead-links: ## Check if the documentation contains dead links.
