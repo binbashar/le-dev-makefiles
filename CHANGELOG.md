@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.1.31"></a>
+## [v0.1.31] - 2021-07-12
+
+- BBL-192 | updating material mkdocs version
+
+
 <a name="v0.1.30"></a>
 ## [v0.1.30] - 2021-06-01
 
@@ -668,7 +674,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.30...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.31...HEAD
+[v0.1.31]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.30...v0.1.31
 [v0.1.30]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.29...v0.1.30
 [v0.1.29]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.28...v0.1.29
 [v0.1.28]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.27...v0.1.28
