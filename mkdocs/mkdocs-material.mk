@@ -5,7 +5,7 @@ SHELL                    := /bin/bash
 
 LOCAL_OS_USER_ID         = $(shell id -u)
 LOCAL_OS_GROUP_ID        = $(shell id -g)
-MKDOCS_DOCKER_IMG        := squidfunk/mkdocs-material:7.1.10
+MKDOCS_DOCKER_IMG        := squidfunk/mkdocs-material:7.2.2
 # GOOGLE_ANALYTICS_KEY: must be preset as os.ENV var
 
 help:
