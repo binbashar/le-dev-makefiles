@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.1.33"></a>
+## [v0.1.33] - 2021-08-12
+
+- Fix terratest for Terraform 0.14.11
+
+
 <a name="v0.1.32"></a>
 ## [v0.1.32] - 2021-08-03
 
@@ -680,7 +686,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.32...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.33...HEAD
+[v0.1.33]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.32...v0.1.33
 [v0.1.32]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.31...v0.1.32
 [v0.1.31]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.30...v0.1.31
 [v0.1.30]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.29...v0.1.30
