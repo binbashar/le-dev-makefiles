@@ -16,12 +16,12 @@ LOCAL_OS_AWS_PROFILE  :="bb-dev-deploymaster"
 LOCAL_OS_AWS_REGION   := us-east-1
 
 TF_PWD_DIR            = $(shell pwd)
-TF_VER                := 0.14.4
+TF_VER                := 0.14.11
 TF_PWD_CONT_DIR       := "/go/src/project"
 TF_DOCKER_ENTRYPOINT  := /bin/terraform
 TF_DOCKER_IMAGE       := binbash/terraform-awscli-terratest-slim
 
-TERRATEST_DOCKER_ENTRYPOINT := dep
+TERRATEST_DOCKER_ENTRYPOINT := go
 TERRATEST_DOCKER_WORKDIR    := ${TF_PWD_CONT_DIR}/tests
 
 #
@@ -93,8 +93,8 @@ terraform-docs: ## A utility to generate documentation from Terraform 0.12 modul
 # TERRATEST                                                    #
 #==============================================================#
 terratest-dep-init: ## dep is a dependency management tool for Go. (https://github.com/golang/dep)
-	${TERRATEST_DEP_CMD_PREFIX} init
-	${TERRATEST_DEP_CMD_PREFIX} ensure
+	${TERRATEST_DEP_CMD_PREFIX} mod init
+	${TERRATEST_DEP_CMD_PREFIX} mod vendor
 	sudo chown -R ${LOCAL_OS_USER_ID}:${LOCAL_OS_GROUP_ID} .
 
 terratest-go-test: ## Run E2E terratests
