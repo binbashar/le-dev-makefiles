@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.1.34"></a>
+## [v0.1.34] - 2021-10-05
+
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- updating material mkdocs to its latest ver
+
+
 <a name="v0.1.33"></a>
 ## [v0.1.33] - 2021-08-12
 
@@ -686,7 +693,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.33...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.34...HEAD
+[v0.1.34]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.33...v0.1.34
 [v0.1.33]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.32...v0.1.33
 [v0.1.32]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.31...v0.1.32
 [v0.1.31]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.30...v0.1.31
