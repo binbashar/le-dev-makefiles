@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.1.35"></a>
+## [v0.1.35] - 2021-10-08
+
+- Create FUNDING.yml
+
+
 <a name="v0.1.34"></a>
 ## [v0.1.34] - 2021-10-05
 
@@ -693,7 +699,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.34...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.35...HEAD
+[v0.1.35]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.34...v0.1.35
 [v0.1.34]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.33...v0.1.34
 [v0.1.33]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.32...v0.1.33
 [v0.1.32]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.31...v0.1.32
