@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.1.36"></a>
+## [v0.1.36] - 2021-10-29
+
+- updating material mkdocs to its latest ver
+
+
 <a name="v0.1.35"></a>
 ## [v0.1.35] - 2021-10-08
 
@@ -699,7 +705,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.35...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.36...HEAD
+[v0.1.36]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.35...v0.1.36
 [v0.1.35]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.34...v0.1.35
 [v0.1.34]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.33...v0.1.34
 [v0.1.33]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.32...v0.1.33
