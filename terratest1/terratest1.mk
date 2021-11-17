@@ -87,7 +87,7 @@ terraform-docs: ## A utility to generate documentation from Terraform 0.12 modul
 	docker run --security-opt="label:disable" --rm \
   	-v $$(pwd):/data \
   	cytopia/terraform-docs:0.16.0 \
-  	terraform-docs-012 --sort-inputs-by-required --with-aggregate-type-defaults markdown table .
+  	terraform-docs-012 markdown table .
 
 #==============================================================#
 # TERRATEST                                                    #
