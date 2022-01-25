@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.2.2"></a>
+## [v0.2.2] - 2022-01-25
+
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- BBL-192 | updating material mkdocs version
+
+
 <a name="v0.2.1"></a>
 ## [v0.2.1] - 2022-01-03
 
@@ -730,7 +737,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.2...HEAD
+[v0.2.2]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.1...v0.2.2
 [v0.2.1]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.0...v0.2.1
 [v0.2.0]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.38...v0.2.0
 [v0.1.38]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.37...v0.1.38
