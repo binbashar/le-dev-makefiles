@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.2.4"></a>
+## [v0.2.4] - 2022-05-28
+
+- upgrading terraform versions to 1.1.9
+
+
 <a name="v0.2.3"></a>
 ## [v0.2.3] - 2022-05-28
 
@@ -746,7 +752,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.3...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.4...HEAD
+[v0.2.4]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.3...v0.2.4
 [v0.2.3]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.2...v0.2.3
 [v0.2.2]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.1...v0.2.2
 [v0.2.1]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.0...v0.2.1
