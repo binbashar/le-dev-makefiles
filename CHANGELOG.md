@@ -7,6 +7,15 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.2.3"></a>
+## [v0.2.3] - 2022-05-28
+
+- updating material mkdocs to latests version
+- adding docker multiple architecture makefile
+- updating materia mkdocs version
+- removing terraform11 and terraform12 from makesfile lib
+
+
 <a name="v0.2.2"></a>
 ## [v0.2.2] - 2022-01-25
 
@@ -737,7 +746,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.2...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.3...HEAD
+[v0.2.3]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.2...v0.2.3
 [v0.2.2]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.1...v0.2.2
 [v0.2.1]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.0...v0.2.1
 [v0.2.0]: https://github.com/binbashar/le-dev-makefiles/compare/v0.1.38...v0.2.0
