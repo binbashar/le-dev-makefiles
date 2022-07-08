@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="^@^@v0.2.5"></a>
+## [^@^@v0.2.5] - 2022-07-08
+
+- upgrading circleci vm to newer image
+- Updating material mkdocs to latest version
+
+
 <a name="v0.2.4"></a>
 ## [v0.2.4] - 2022-05-28
 
@@ -752,7 +759,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.4...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/^@^@v0.2.5...HEAD
+[^@^@v0.2.5]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.4...^@^@v0.2.5
 [v0.2.4]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.3...v0.2.4
 [v0.2.3]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.2...v0.2.3
 [v0.2.2]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.1...v0.2.2
