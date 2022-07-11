@@ -20,11 +20,12 @@ docs-deploy-gh: ## deploy to Github pages
 	-v ~/.ssh:/root/.ssh \
 	-v ${PWD}:/docs \
 	-e GOOGLE_ANALYTICS_KEY=${GOOGLE_ANALYTICS_KEY} \
-	${MKDOCS_DOCKER_IMG} gh-deploy --clean \
-	--message "CircleCI deploying to gh-pages [ci skip]" \
-	--remote-branch gh-pages
-	sudo chown -R ${LOCAL_OS_USER_ID}:${LOCAL_OS_GROUP_ID} ./site
-	rm -rf ./site
+	--entrypoint=sh \
+	${MKDOCS_DOCKER_IMG} -c 'apk add git && \
+	git config --global --add safe.directory /docs && \
+	mkdocs gh-deploy --clean --message "CircleCI deploying to gh-pages [ci skip]" --remote-branch gh-pages'
+	#sudo chown -R ${LOCAL_OS_USER_ID}:${LOCAL_OS_GROUP_ID} ./site
+	#rm -rf ./site
 
 docs-live: ## Build and launch a local copy of the documentation website in http://localhost:8000
 	@docker run --rm -it \
