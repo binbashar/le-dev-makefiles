@@ -7,8 +7,15 @@ All notable changes to this project will be documented in this file.
 
 
 
-<a name="^@^@v0.2.5"></a>
-## [^@^@v0.2.5] - 2022-07-08
+<a name="v0.2.6"></a>
+## [v0.2.6] - 2022-07-11
+
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- Fix for material-mkdocs circleci job GH deploy error unsafe repository ('/docs' is owned by someone else)
+
+
+<a name="v0.2.5"></a>
+## [v0.2.5] - 2022-07-08
 
 - upgrading circleci vm to newer image
 - Updating material mkdocs to latest version
@@ -759,8 +766,9 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/^@^@v0.2.5...HEAD
-[^@^@v0.2.5]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.4...^@^@v0.2.5
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.6...HEAD
+[v0.2.6]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.5...v0.2.6
+[v0.2.5]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.4...v0.2.5
 [v0.2.4]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.3...v0.2.4
 [v0.2.3]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.2...v0.2.3
 [v0.2.2]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.1...v0.2.2
