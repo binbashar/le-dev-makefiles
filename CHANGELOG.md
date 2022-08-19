@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.2.8"></a>
+## [v0.2.8] - 2022-08-19
+
+- Add tflint (no deep lint yet) for Terraform 1 ([#31](https://github.com/binbashar/le-dev-makefiles/issues/31))
+
+
 <a name="v0.2.7"></a>
 ## [v0.2.7] - 2022-07-11
 
@@ -773,7 +779,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.7...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.8...HEAD
+[v0.2.8]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.7...v0.2.8
 [v0.2.7]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.6...v0.2.7
 [v0.2.6]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.5...v0.2.6
 [v0.2.5]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.4...v0.2.5
