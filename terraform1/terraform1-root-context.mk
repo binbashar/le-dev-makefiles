@@ -46,6 +46,12 @@ format: ## The terraform fmt is used to rewrite tf conf files to a canonical for
 format-check: ## The terraform fmt is used to rewrite tf conf files to a canonical format and style.
 	${TF_CMD_PREFIX} fmt -recursive -check ${TF_PWD_CONT_DIR}
 
+tflint: ## TFLint is a Terraform linter for detecting errors that can not be detected by terraform plan (tf0.12 > 0.10.x).
+	docker run --security-opt="label:disable" --rm \
+	-v ${LOCAL_OS_AWS_CONF_DIR}:/root/.aws \
+	-v ${TF_PWD_DIR}:/data \
+	-t ghcr.io/terraform-linters/tflint:v0.39.3
+
 #==============================================================#
 # TERRAFORM HELPERS                                            #
 #==============================================================#
