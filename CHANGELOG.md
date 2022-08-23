@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.2.9"></a>
+## [v0.2.9] - 2022-08-23
+
+- ISSUE-32 Introduced fix for running buildx. Also added option for arguments and platforms
+
+
 <a name="v0.2.8"></a>
 ## [v0.2.8] - 2022-08-19
 
@@ -779,7 +785,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.8...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.9...HEAD
+[v0.2.9]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.8...v0.2.9
 [v0.2.8]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.7...v0.2.8
 [v0.2.7]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.6...v0.2.7
 [v0.2.6]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.5...v0.2.6
