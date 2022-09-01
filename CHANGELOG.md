@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.2.10"></a>
+## [v0.2.10] - 2022-09-01
+
+- Update README.md
+
+
 <a name="v0.2.9"></a>
 ## [v0.2.9] - 2022-08-23
 
@@ -785,7 +791,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.9...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.10...HEAD
+[v0.2.10]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.9...v0.2.10
 [v0.2.9]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.8...v0.2.9
 [v0.2.8]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.7...v0.2.8
 [v0.2.7]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.6...v0.2.7
