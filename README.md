@@ -1,10 +1,7 @@
-<div align="center">
-    <img src="./%40figures/binbash-logo.png" alt="drawing" width="250"/>
-</div>
-<div align="right">
-  <img src="./%40figures/binbash-leverage-logo.png"
-  alt="leverage" width="130"/>
-</div>
+<a href="https://github.com/binbashar">
+    <img src="https://raw.githubusercontent.com/binbashar/le-ref-architecture-doc/master/docs/assets/images/logos/binbash-leverage-banner.png" width="1032" align="left" alt="Binbash"/>
+</a>
+<br clear="left"/>
 
 # Binbash Leverage Dev Makefiles
 
