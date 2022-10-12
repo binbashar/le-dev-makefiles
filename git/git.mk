@@ -4,7 +4,6 @@
 SHELL := /bin/bash
 
 GIT_BRANCH_NAME       := master
-GIT_BRANCH_NAME_ALT   := main
 GIT_GITHUB_ORG        := binbashar
 GIT_REPO_PREFIX       := git@github.com:${GIT_GITHUB_ORG}
 
@@ -41,13 +40,10 @@ git-pull-master: ## Git pull repo from master branch
         echo -----------------------;\
         echo $$1;\
         echo -----------------------;\
-		echo "Looking for .git/refs/heads/${GIT_BRANCH_NAME}...";\
-		if [[ -f .git/refs/heads/${GIT_BRANCH_NAME} ]]; then export BRANCH=${GIT_BRANCH_NAME}; else echo "Looking for .git/refs/heads/${GIT_BRANCH_NAME_ALT}..."; if [[ -f .git/refs/heads/${GIT_BRANCH_NAME_ALT} ]]; then export BRANCH=${GIT_BRANCH_NAME_ALT}; else echo "Branch not found!" && exit 1; fi; fi; \
-		echo "checking out $${BRANCH}...";\
-        git checkout $${BRANCH};\
-        git pull origin $${BRANCH};\
+        git checkout $$3;\
+        git pull origin $$3;\
         echo -----------------------;\
-        echo "GIT PULL BRANCH $${BRANCH} DONE";\
+        echo "GIT PULL BRANCH $$3 DONE";\
         cd ..;\
         echo "";\
 	done;\
@@ -63,10 +59,7 @@ git-discard-changes-repo: ## Git checkout . repo (to discard local changes)
         echo -----------------------;\
         echo $$1;\
         echo -----------------------;\
-		echo "Looking for .git/refs/heads/${GIT_BRANCH_NAME}...";\
-		if [[ -f .git/refs/heads/${GIT_BRANCH_NAME} ]]; then export BRANCH=${GIT_BRANCH_NAME}; else echo "Looking for .git/refs/heads/${GIT_BRANCH_NAME_ALT}..."; if [[ -f .git/refs/heads/${GIT_BRANCH_NAME_ALT} ]]; then export BRANCH=${GIT_BRANCH_NAME_ALT}; else echo "Branch not found!" && exit 1; fi; fi; \
-		echo "checking out $${BRANCH}...";\
-        git checkout $${BRANCH};\
+        git checkout $$3;\
         git checkout .;\
         echo -----------------------;\
         echo "GIT CHECKOUT . DONE";\
@@ -87,16 +80,13 @@ git-sync-fork-upstream: ## Git sync from master forked upstream repos
 			echo $$1;\
 			echo $$2;\
 			echo -----------------------;\
-			echo "Looking for .git/refs/heads/${GIT_BRANCH_NAME}...";\
-			if [[ -f .git/refs/heads/${GIT_BRANCH_NAME} ]]; then export BRANCH=${GIT_BRANCH_NAME}; else echo "Looking for .git/refs/heads/${GIT_BRANCH_NAME_ALT}..."; if [[ -f .git/refs/heads/${GIT_BRANCH_NAME_ALT} ]]; then export BRANCH=${GIT_BRANCH_NAME_ALT}; else echo "Branch not found!" && exit 1; fi; fi; \
-			echo "checking out $${BRANCH}...";\
-			git checkout $${BRANCH};\
-			git pull origin $${BRANCH};\
+			git checkout $$3;\
+			git pull origin $$3;\
 			git remote add upstream https://github.com/$$2;\
 			git fetch --tags upstream;\
-			git pull upstream $${BRANCH};\
-			git push origin $${BRANCH};\
-			git push -f --tags origin $${BRANCH};\
+			git pull upstream $$3;\
+			git push origin $$3;\
+			git push -f --tags origin $$3;\
 			echo -----------------------;\
 			echo "GIT FORK TAG SYNC W/ REPO $$2 DONE";\
 			cd ..;\
@@ -117,14 +107,11 @@ git-sync-tag-fork-upstream: ## Git tag sync from master forked upstream repos
 			echo $$1;\
 			echo $$2;\
 			echo -----------------------;\
-			echo "Looking for .git/refs/heads/${GIT_BRANCH_NAME}...";\
-			if [[ -f .git/refs/heads/${GIT_BRANCH_NAME} ]]; then export BRANCH=${GIT_BRANCH_NAME}; else echo "Looking for .git/refs/heads/${GIT_BRANCH_NAME_ALT}..."; if [[ -f .git/refs/heads/${GIT_BRANCH_NAME_ALT} ]]; then export BRANCH=${GIT_BRANCH_NAME_ALT}; else echo "Branch not found!" && exit 1; fi; fi; \
-			echo "checking out $${BRANCH}...";\
-			git checkout $${BRANCH};\
-			git pull origin $${BRANCH};\
+			git checkout $$3;\
+			git pull origin $$3;\
 			git remote add upstream https://github.com/$$2;\
 			git fetch --tags upstream;\
-			git push -f --tags origin $${BRANCH};\
+			git push -f --tags origin $$3;\
 			echo -----------------------;\
 			echo "GIT FORK TAG SYNC W/ REPO $$2 DONE";\
 			cd ..;\
