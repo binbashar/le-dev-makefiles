@@ -40,10 +40,10 @@ git-pull-master: ## Git pull repo from master branch
         echo -----------------------;\
         echo $$1;\
         echo -----------------------;\
-        git checkout ${GIT_BRANCH_NAME};\
-        git pull origin ${GIT_BRANCH_NAME};\
+        git checkout $$3;\
+        git pull origin $$3;\
         echo -----------------------;\
-        echo "GIT PULL BRANCH ${GIT_BRANCH_NAME} DONE";\
+        echo "GIT PULL BRANCH $$3 DONE";\
         cd ..;\
         echo "";\
 	done;\
@@ -59,7 +59,7 @@ git-discard-changes-repo: ## Git checkout . repo (to discard local changes)
         echo -----------------------;\
         echo $$1;\
         echo -----------------------;\
-        git checkout ${GIT_BRANCH_NAME};\
+        git checkout $$3;\
         git checkout .;\
         echo -----------------------;\
         echo "GIT CHECKOUT . DONE";\
@@ -80,13 +80,13 @@ git-sync-fork-upstream: ## Git sync from master forked upstream repos
 			echo $$1;\
 			echo $$2;\
 			echo -----------------------;\
-			git checkout ${GIT_BRANCH_NAME};\
-			git pull origin ${GIT_BRANCH_NAME};\
+			git checkout $$3;\
+			git pull origin $$3;\
 			git remote add upstream https://github.com/$$2;\
 			git fetch --tags upstream;\
-			git pull upstream ${GIT_BRANCH_NAME};\
-			git push origin ${GIT_BRANCH_NAME};\
-			git push -f --tags origin ${GIT_BRANCH_NAME};\
+			git pull upstream $$3;\
+			git push origin $$3;\
+			git push -f --tags origin $$3;\
 			echo -----------------------;\
 			echo "GIT FORK TAG SYNC W/ REPO $$2 DONE";\
 			cd ..;\
@@ -107,11 +107,11 @@ git-sync-tag-fork-upstream: ## Git tag sync from master forked upstream repos
 			echo $$1;\
 			echo $$2;\
 			echo -----------------------;\
-			git checkout ${GIT_BRANCH_NAME};\
-			git pull origin ${GIT_BRANCH_NAME};\
+			git checkout $$3;\
+			git pull origin $$3;\
 			git remote add upstream https://github.com/$$2;\
 			git fetch --tags upstream;\
-			git push -f --tags origin ${GIT_BRANCH_NAME};\
+			git push -f --tags origin $$3;\
 			echo -----------------------;\
 			echo "GIT FORK TAG SYNC W/ REPO $$2 DONE";\
 			cd ..;\
