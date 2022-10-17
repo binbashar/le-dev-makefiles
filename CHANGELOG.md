@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.2.12"></a>
+## [v0.2.12] - 2022-10-17
+
+- ISSUE-35 added capabilities for managin multitags ([#36](https://github.com/binbashar/le-dev-makefiles/issues/36))
+
+
 <a name="v0.2.11"></a>
 ## [v0.2.11] - 2022-10-17
 
@@ -797,7 +803,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.11...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.12...HEAD
+[v0.2.12]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.11...v0.2.12
 [v0.2.11]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.10...v0.2.11
 [v0.2.10]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.9...v0.2.10
 [v0.2.9]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.8...v0.2.9
