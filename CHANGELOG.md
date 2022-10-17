@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.2.11"></a>
+## [v0.2.11] - 2022-10-17
+
+- ENHANCEMENT | BBL-528 added alt default branch and logic to find out whether main or master is the default branch ([#34](https://github.com/binbashar/le-dev-makefiles/issues/34))
+
+
 <a name="v0.2.10"></a>
 ## [v0.2.10] - 2022-09-01
 
@@ -791,7 +797,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.10...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.11...HEAD
+[v0.2.11]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.10...v0.2.11
 [v0.2.10]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.9...v0.2.10
 [v0.2.9]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.8...v0.2.9
 [v0.2.8]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.7...v0.2.8
