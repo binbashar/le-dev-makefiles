@@ -4,6 +4,16 @@
 SHELL            := /bin/bash
 DOCKER_REPO_NAME := binbash
 
+# if more docker tags have to be passed, set a var as follows in your calle makefile:
+# ADDITIONAL_TAGS := "tag1,tag2,tagn"
+#
+ifdef ADDITIONAL_TAGS
+	ADT := $(shell echo ${ADDITIONAL_TAGS}|tr ',' ' ')
+	ADDITIONAL_TAGS_INTERNAL := $(foreach arg, ${ADT}, -t${DOCKER_REPO_NAME}/${DOCKER_IMG_NAME}:$(arg))
+else
+	ADDITIONAL_TAGS_INTERNAL :=
+endif
+
 # if a specific platform has to be targeted set in your called makefile this var setting your platforms as value:
 # TARGET_PLATFORMS := 'linux/amd64,linux/arm64,linux/arm/v6'
 #
@@ -21,7 +31,7 @@ ifdef ADDITIONAL_DOCKER_ARGS
 	ADA := $(shell echo ${ADDITIONAL_DOCKER_ARGS}|tr ',' ' ')
 	OTHER_DOCKER_ARGS := $(foreach arg, ${ADA},  --build-arg $(arg))
 else
-	OTHER_DOCKER_ARGS := ''
+	OTHER_DOCKER_ARGS :=
 endif
 
 help:
@@ -39,7 +49,7 @@ runbuildxlocal:
 	docker buildx build \
 	    --builder=container \
 	    --load \
-		-t ${DOCKER_REPO_NAME}/${DOCKER_IMG_NAME}:${DOCKER_TAG} \
+		-t ${DOCKER_REPO_NAME}/${DOCKER_IMG_NAME}:${DOCKER_TAG} ${ADDITIONAL_TAGS_INTERNAL} \
 		--build-arg DOCKER_TAG='${DOCKER_TAG}'${OTHER_DOCKER_ARGS} .
 
 runbuildxpush:
@@ -47,7 +57,7 @@ runbuildxpush:
 	    --builder=container \
 		--platform ${TARGET_PLATFORMS_INTERNAL} \
 		--push \
-		-t ${DOCKER_REPO_NAME}/${DOCKER_IMG_NAME}:${DOCKER_TAG} \
+		-t ${DOCKER_REPO_NAME}/${DOCKER_IMG_NAME}:${DOCKER_TAG} ${ADDITIONAL_TAGS_INTERNAL} \
 		--build-arg DOCKER_TAG='${DOCKER_TAG}'${OTHER_DOCKER_ARGS} .
 
 setbuildxenv:
