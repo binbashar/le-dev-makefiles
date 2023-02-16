@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.2.13"></a>
+## [v0.2.13] - 2023-02-16
+
+- updating material mkdocs version to its latests stable version
+
+
 <a name="v0.2.12"></a>
 ## [v0.2.12] - 2022-10-17
 
@@ -803,7 +809,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.12...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.13...HEAD
+[v0.2.13]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.12...v0.2.13
 [v0.2.12]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.11...v0.2.12
 [v0.2.11]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.10...v0.2.11
 [v0.2.10]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.9...v0.2.10
