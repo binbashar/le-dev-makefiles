@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.2.14"></a>
+## [v0.2.14] - 2023-03-13
+
+- updating material mkdocs image to latest to get fixes and docker multi-arch support
+
+
 <a name="v0.2.13"></a>
 ## [v0.2.13] - 2023-02-16
 
@@ -809,7 +815,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.13...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.14...HEAD
+[v0.2.14]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.13...v0.2.14
 [v0.2.13]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.12...v0.2.13
 [v0.2.12]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.11...v0.2.12
 [v0.2.11]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.10...v0.2.11
