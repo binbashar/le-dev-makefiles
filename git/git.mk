@@ -95,7 +95,7 @@ git-sync-fork-upstream: ## Git sync from master forked upstream repos
 				[[  $$(grep -E "(Fatal|CONFLICT)" gitpull.log  | wc -l ) -gt 0 ]] && ERROR_CODE=1; \
 				FORCE_PUSH="-f"; \
 			fi; \
-			if [[ $ERROR_CODE -eq 0 ]]; \
+			if [[ $$ERROR_CODE -eq 0 ]]; \
 			then \
 				echo "Pushing..."; \
 				echo git push $$FORCE_PUSH origin $$3;\
