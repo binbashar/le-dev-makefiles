@@ -11,7 +11,7 @@ help:
 # NOTIFICATIONS												   #
 #==============================================================#
 notify-success: ## Sends notification on success, MESSAGE and SLACK_URL have to be set
-	@echo "curl -s -X POST -H 'Content-type: application/json' -d '{\"blocks\":[ {\"type\":\"header\", \"text\":{ \"type\":\"plain_text\", \"text\": \"Task success\" }}, {\"type\":\"divider\"}, {\"type\":\"context\", \"elements\":[ {\"type\":\"mrkdwn\", \"text\": \":white_check_mark: $(MESSAGE)*\n.\" } ] } ] }' $(SLACK_URL)"
+	@echo "curl -s -X POST -H 'Content-type: application/json' -d '{\"blocks\":[ {\"type\":\"header\", \"text\":{ \"type\":\"plain_text\", \"text\": \"Task success\" }}, {\"type\":\"divider\"}, {\"type\":\"context\", \"elements\":[ {\"type\":\"mrkdwn\", \"text\": \":white_check_mark: $(MESSAGE)\n.\" } ] } ] }' $(SLACK_URL)"
 
 notify-failure: ## Sends notification on failure, MESSAGE and SLACK_URL have to be set
-	@echo "curl -s -X POST -H 'Content-type: application/json' -d '{\"blocks\":[ {\"type\":\"header\", \"text\":{ \"type\":\"plain_text\", \"text\": \"Task Failure\" }}, {\"type\":\"divider\"}, {\"type\":\"context\", \"elements\":[ {\"type\":\"mrkdwn\", \"text\": \":x: $(MESSAGE)*\n.\" } ] } ] }' $(SLACK_URL)"
+	@echo "curl -s -X POST -H 'Content-type: application/json' -d '{\"blocks\":[ {\"type\":\"header\", \"text\":{ \"type\":\"plain_text\", \"text\": \"Task Failure\" }}, {\"type\":\"divider\"}, {\"type\":\"context\", \"elements\":[ {\"type\":\"mrkdwn\", \"text\": \":x: $(MESSAGE)\n.\" } ] } ] }' $(SLACK_URL)"
