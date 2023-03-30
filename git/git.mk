@@ -98,9 +98,9 @@ git-sync-fork-upstream: ## Git sync from master forked upstream repos
 			if [[ $ERROR_CODE -eq 0 ]]; \
 			then \
 				echo "Pushing..."; \
-				git push $$FORCE_PUSH origin $$3;\
+				echo git push $$FORCE_PUSH origin $$3;\
 				echo "Pushing tags..."; \
-				git push -f --tags origin $$3;\
+				echo git push -f --tags origin $$3;\
 				echo -----------------------;\
 				echo "GIT FORK TAG SYNC W/ REPO $$2 DONE";\
 				cd ..;\
