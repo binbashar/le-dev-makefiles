@@ -95,8 +95,8 @@ git-sync-fork-upstream: ## Git sync from master forked upstream repos
 			fi; \
 			echo "evaluating "; \
 			if [[  $$(grep -E "(error|fatal|Fatal|CONFLICT)" gitpull.log | wc -l ) -gt 0 ]];\
-				ERROR_CODE=1; \
 			then \
+				ERROR_CODE=1; \
 			fi; \
 			if [[ $$ERROR_CODE -eq 0 ]]; \
 			then \
