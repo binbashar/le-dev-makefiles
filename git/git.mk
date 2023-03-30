@@ -84,12 +84,31 @@ git-sync-fork-upstream: ## Git sync from master forked upstream repos
 			git pull origin $$3;\
 			git remote add upstream https://github.com/$$2;\
 			git fetch --tags upstream;\
-			git pull upstream $$3;\
-			git push origin $$3;\
-			git push -f --tags origin $$3;\
-			echo -----------------------;\
-			echo "GIT FORK TAG SYNC W/ REPO $$2 DONE";\
-			cd ..;\
+			git pull upstream $$3 |& tee gitpull.log;\
+			ERROR_CODE=0; \
+			FORCE_PUSH=""; \
+			if [[  $$(grep "You have divergent branches" gitpull.log | wc -l ) -gt 0 ]];\
+			then \
+				echo "Divergent branches found, trying to rebase..."; \
+				git pull --rebase upstream $$3 |& tee gitpull.log;\
+				echo "evaluating "; \
+				[[  $$(grep -q "Fatal" gitpull.log  | wc -l ) -gt 0 ]] && ERROR_CODE=1; \
+				FORCE_PUSH="-f"; \
+			fi; \
+			if [[ $ERROR_CODE -eq 0 ]]; \
+			then \
+				echo "Pushing..."; \
+				git push $$FORCE_PUSH origin $$3;\
+				echo "Pushing tags..."; \
+				git push -f --tags origin $$3;\
+				echo -----------------------;\
+				echo "GIT FORK TAG SYNC W/ REPO $$2 DONE";\
+				cd ..;\
+			else \
+				echo "GIT FORK TAG SYNC W/ REPO $$2 FAILED";\
+				cd ..;\
+				echo $$1 >> failedsyncs.txt; \
+			fi; \
 			echo "";\
 		fi;\
 	done;\
