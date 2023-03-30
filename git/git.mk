@@ -91,9 +91,12 @@ git-sync-fork-upstream: ## Git sync from master forked upstream repos
 			then \
 				echo "Divergent branches found, trying to rebase..."; \
 				git pull --rebase upstream $$3 |& tee gitpull.log;\
-				echo "evaluating "; \
-				[[  $$(grep -E "(fatal|Fatal|CONFLICT)" gitpull.log  | wc -l ) -gt 0 ]] && ERROR_CODE=1; \
 				FORCE_PUSH="-f"; \
+			fi; \
+			echo "evaluating "; \
+			if [[  $$(grep -E "(error|fatal|Fatal|CONFLICT)" gitpull.log | wc -l ) -gt 0 ]];\
+				ERROR_CODE=1; \
+			then \
 			fi; \
 			if [[ $$ERROR_CODE -eq 0 ]]; \
 			then \
