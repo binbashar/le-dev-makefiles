@@ -69,7 +69,7 @@ git-discard-changes-repo: ## Git checkout . repo (to discard local changes)
 	IFS=$$OLDIFS
 
 git-sync-fork-upstream: ## Git sync from master forked upstream repos
-	REPOS=(${REPOS_LIST});\
+	@REPOS=(${REPOS_LIST});\
     OLDIFS=$$IFS;\
     IFS=',';\
     for i in "$${REPOS[@]}"; do\
@@ -115,7 +115,7 @@ git-sync-fork-upstream: ## Git sync from master forked upstream repos
 	IFS=$$OLDIFS
 
 git-sync-tag-fork-upstream: ## Git tag sync from master forked upstream repos
-	REPOS=(${REPOS_LIST});\
+	@REPOS=(${REPOS_LIST});\
     OLDIFS=$$IFS;\
     IFS=',';\
     for i in "$${REPOS[@]}"; do\
