@@ -15,7 +15,7 @@ help:
 # GIT MODULE MGMT											   #
 #==============================================================#
 git-clone-repo: ## Git clone repo
-	REPOS=(${REPOS_LIST});\
+	@REPOS=(${REPOS_LIST});\
     OLDIFS=$$IFS;\
     IFS=',';\
     for i in "$${REPOS[@]}"; do\
@@ -31,7 +31,7 @@ git-clone-repo: ## Git clone repo
 	IFS=$$OLDIFS
 
 git-pull-master: ## Git pull repo from master branch
-	REPOS=(${REPOS_LIST});\
+	@REPOS=(${REPOS_LIST});\
     OLDIFS=$$IFS;\
     IFS=',';\
     for i in "$${REPOS[@]}"; do\
@@ -50,7 +50,7 @@ git-pull-master: ## Git pull repo from master branch
 	IFS=$$OLDIFS
 
 git-discard-changes-repo: ## Git checkout . repo (to discard local changes)
-	REPOS=(${REPOS_LIST});\
+	@REPOS=(${REPOS_LIST});\
     OLDIFS=$$IFS;\
     IFS=',';\
     for i in "$${REPOS[@]}"; do\
