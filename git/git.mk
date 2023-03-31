@@ -110,7 +110,7 @@ git-sync-fork-upstream: ## Git sync from master forked upstream repos
 				then \
 					cd ..;\
 					echo $$1 >> failedsyncs.txt; \
-				else
+				else \
 					echo "GIT FORK TAG SYNC W/ REPO $$2 DONE";\
 					cd ..;\
 				fi; \
