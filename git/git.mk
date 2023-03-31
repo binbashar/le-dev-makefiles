@@ -102,12 +102,18 @@ git-sync-fork-upstream: ## Git sync from master forked upstream repos
 			if [[ $$ERROR_CODE -eq 0 ]]; \
 			then \
 				echo "Pushing..."; \
-				git push $$FORCE_PUSH origin $$3;\
+				git push $$FORCE_PUSH origin $$3 |& tee gitpush.log;\
 				echo "Pushing tags..."; \
-				git push -f --tags origin $$3;\
+				git push -f --tags origin $$3 |& tee gitpushtags.log;\
 				echo -----------------------;\
-				echo "GIT FORK TAG SYNC W/ REPO $$2 DONE";\
-				cd ..;\
+				if [[  $$(grep -E "(error|fatal|Fatal|CONFLICT)" gitpush.log | wc -l ) -gt 0 ]] || [[  $$(grep -E "(error|fatal|Fatal|CONFLICT)" gitpushtags.log | wc -l ) -gt 0 ]];\
+				then \
+					cd ..;\
+					echo $$1 >> failedsyncs.txt; \
+				else
+					echo "GIT FORK TAG SYNC W/ REPO $$2 DONE";\
+					cd ..;\
+				fi; \
 			else \
 				echo "GIT FORK TAG SYNC W/ REPO $$2 FAILED";\
 				cd ..;\
