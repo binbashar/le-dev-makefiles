@@ -76,7 +76,7 @@ git-sync-fork-upstream: ## Git sync from master forked upstream repos
         set -- $$i;\
 		if [ "$$2" != "" ]; then\
 			echo "cd into $$1 $$(pwd)"; \
-			if [ -d $$1 ]; then/
+			if [ -d $$1 ]; then\
 				cd $$1;\
 				echo -----------------------;\
 				echo $$1;\
