@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.2.15"></a>
+## [v0.2.15] - 2023-06-01
+
+- Issue 47 le dev tools notification on failure ([#39](https://github.com/binbashar/le-dev-makefiles/issues/39))
+
+
 <a name="v0.2.14"></a>
 ## [v0.2.14] - 2023-03-13
 
@@ -815,7 +821,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.14...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.15...HEAD
+[v0.2.15]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.14...v0.2.15
 [v0.2.14]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.13...v0.2.14
 [v0.2.13]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.12...v0.2.13
 [v0.2.12]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.11...v0.2.12
