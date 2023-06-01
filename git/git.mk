@@ -15,7 +15,7 @@ help:
 # GIT MODULE MGMT											   #
 #==============================================================#
 git-clone-repo: ## Git clone repo
-	REPOS=(${REPOS_LIST});\
+	@REPOS=(${REPOS_LIST});\
     OLDIFS=$$IFS;\
     IFS=',';\
     for i in "$${REPOS[@]}"; do\
@@ -31,7 +31,7 @@ git-clone-repo: ## Git clone repo
 	IFS=$$OLDIFS
 
 git-pull-master: ## Git pull repo from master branch
-	REPOS=(${REPOS_LIST});\
+	@REPOS=(${REPOS_LIST});\
     OLDIFS=$$IFS;\
     IFS=',';\
     for i in "$${REPOS[@]}"; do\
@@ -50,7 +50,7 @@ git-pull-master: ## Git pull repo from master branch
 	IFS=$$OLDIFS
 
 git-discard-changes-repo: ## Git checkout . repo (to discard local changes)
-	REPOS=(${REPOS_LIST});\
+	@REPOS=(${REPOS_LIST});\
     OLDIFS=$$IFS;\
     IFS=',';\
     for i in "$${REPOS[@]}"; do\
@@ -69,34 +69,68 @@ git-discard-changes-repo: ## Git checkout . repo (to discard local changes)
 	IFS=$$OLDIFS
 
 git-sync-fork-upstream: ## Git sync from master forked upstream repos
-	REPOS=(${REPOS_LIST});\
+	@REPOS=(${REPOS_LIST});\
     OLDIFS=$$IFS;\
     IFS=',';\
     for i in "$${REPOS[@]}"; do\
         set -- $$i;\
 		if [ "$$2" != "" ]; then\
-			cd $$1;\
-			echo -----------------------;\
-			echo $$1;\
-			echo $$2;\
-			echo -----------------------;\
-			git checkout $$3;\
-			git pull origin $$3;\
-			git remote add upstream https://github.com/$$2;\
-			git fetch --tags upstream;\
-			git pull upstream $$3;\
-			git push origin $$3;\
-			git push -f --tags origin $$3;\
-			echo -----------------------;\
-			echo "GIT FORK TAG SYNC W/ REPO $$2 DONE";\
-			cd ..;\
-			echo "";\
+			echo "cd into $$1 $$(pwd)"; \
+			if [ -d $$1 ]; then\
+				cd $$1;\
+				echo -----------------------;\
+				echo $$1;\
+				echo $$2;\
+				echo -----------------------;\
+				git checkout $$3;\
+				git pull origin $$3;\
+				git remote add upstream https://github.com/$$2;\
+				git fetch --tags upstream;\
+				git pull upstream $$3 |& tee gitpull.log;\
+				ERROR_CODE=0; \
+				FORCE_PUSH=""; \
+				if [[  $$(grep "You have divergent branches" gitpull.log | wc -l ) -gt 0 ]];\
+				then \
+					echo "Divergent branches found, trying to rebase..."; \
+					git pull --rebase upstream $$3 |& tee gitpull.log;\
+					FORCE_PUSH="-f"; \
+				fi; \
+				echo "evaluating "; \
+				if [[  $$(grep -E "(error|fatal|Fatal|CONFLICT)" gitpull.log | wc -l ) -gt 0 ]];\
+				then \
+					ERROR_CODE=1; \
+				fi; \
+				if [[ $$ERROR_CODE -eq 0 ]]; \
+				then \
+					echo "Pushing..."; \
+					git push $$FORCE_PUSH origin $$3 |& tee gitpush.log;\
+					echo "Pushing tags..."; \
+					git push -f --tags origin $$3 |& tee gitpushtags.log;\
+					echo -----------------------;\
+					if [[  $$(grep -E "(error|fatal|Fatal|CONFLICT)" gitpush.log | wc -l ) -gt 0 ]] || [[  $$(grep -E "(error|fatal|Fatal|CONFLICT)" gitpushtags.log | wc -l ) -gt 0 ]];\
+					then \
+						cd ..;\
+						echo $$1 >> failedsyncs.txt; \
+					else \
+						echo "GIT FORK TAG SYNC W/ REPO $$2 DONE";\
+						cd ..;\
+					fi; \
+				else \
+					echo "GIT FORK TAG SYNC W/ REPO $$2 FAILED";\
+					cd ..;\
+					echo $$1 >> failedsyncs.txt; \
+				fi; \
+				echo "";\
+			else \
+				echo "GIT FORK TAG SYNC W/ REPO $$2 FAILED - Directory does not exist";\
+				echo $$1 >> failedsyncs.txt; \
+			fi; \
 		fi;\
 	done;\
 	IFS=$$OLDIFS
 
 git-sync-tag-fork-upstream: ## Git tag sync from master forked upstream repos
-	REPOS=(${REPOS_LIST});\
+	@REPOS=(${REPOS_LIST});\
     OLDIFS=$$IFS;\
     IFS=',';\
     for i in "$${REPOS[@]}"; do\
