@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.2.16"></a>
+## [v0.2.16] - 2023-06-24
+
+- Updating to latest material mkdocs version 9.1.17
+
+
 <a name="v0.2.15"></a>
 ## [v0.2.15] - 2023-06-01
 
@@ -821,7 +827,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.15...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.16...HEAD
+[v0.2.16]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.15...v0.2.16
 [v0.2.15]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.14...v0.2.15
 [v0.2.14]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.13...v0.2.14
 [v0.2.13]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.12...v0.2.13
