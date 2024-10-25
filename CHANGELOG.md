@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.2.17"></a>
+## [v0.2.17] - 2023-09-08
+
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- updating material mkdocs version to its latests stable version 9.2.8
+
+
 <a name="v0.2.16"></a>
 ## [v0.2.16] - 2023-06-24
 
@@ -827,7 +834,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.16...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.17...HEAD
+[v0.2.17]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.16...v0.2.17
 [v0.2.16]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.15...v0.2.16
 [v0.2.15]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.14...v0.2.15
 [v0.2.14]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.13...v0.2.14
