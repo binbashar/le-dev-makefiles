@@ -7,6 +7,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.2.18"></a>
+## [v0.2.18] - 2024-10-25
+
+- updating ubuntu vm ver at cicleci config
+- Merge branch 'master' of github.com:binbashar/le-dev-makefiles
+- updating material mkdocs version
+
+
 <a name="v0.2.17"></a>
 ## [v0.2.17] - 2023-09-08
 
@@ -834,7 +842,8 @@ All notable changes to this project will be documented in this file.
 - Initial Commit
 
 
-[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.17...HEAD
+[Unreleased]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.18...HEAD
+[v0.2.18]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.17...v0.2.18
 [v0.2.17]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.16...v0.2.17
 [v0.2.16]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.15...v0.2.16
 [v0.2.15]: https://github.com/binbashar/le-dev-makefiles/compare/v0.2.14...v0.2.15
